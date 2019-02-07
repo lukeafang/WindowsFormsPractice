@@ -56,6 +56,12 @@
             this.dbConnectCreateTableBtn = new System.Windows.Forms.Button();
             this.dbConnectDropTableBtn = new System.Windows.Forms.Button();
             this.dbConnectInsertBtn = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnSheet4LoadFile = new System.Windows.Forms.Button();
+            this.textBoxSheet4LoadFile = new System.Windows.Forms.TextBox();
+            this.btnSheet4SaveFile = new System.Windows.Forms.Button();
+            this.btnSheet4SaveFileStream = new System.Windows.Forms.Button();
+            this.btnSheet4LoadFileStream = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -64,6 +70,7 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -78,6 +85,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -364,6 +372,69 @@
             this.dbConnectInsertBtn.UseVisualStyleBackColor = true;
             this.dbConnectInsertBtn.Click += new System.EventHandler(this.dbConnectInsertBtn_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnSheet4SaveFileStream);
+            this.groupBox5.Controls.Add(this.btnSheet4LoadFileStream);
+            this.groupBox5.Controls.Add(this.btnSheet4SaveFile);
+            this.groupBox5.Controls.Add(this.textBoxSheet4LoadFile);
+            this.groupBox5.Controls.Add(this.btnSheet4LoadFile);
+            this.groupBox5.Location = new System.Drawing.Point(241, 118);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(261, 269);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Sheet4 (File Operation)";
+            // 
+            // btnSheet4LoadFile
+            // 
+            this.btnSheet4LoadFile.Location = new System.Drawing.Point(6, 17);
+            this.btnSheet4LoadFile.Name = "btnSheet4LoadFile";
+            this.btnSheet4LoadFile.Size = new System.Drawing.Size(75, 23);
+            this.btnSheet4LoadFile.TabIndex = 0;
+            this.btnSheet4LoadFile.Text = "Load";
+            this.btnSheet4LoadFile.UseVisualStyleBackColor = true;
+            this.btnSheet4LoadFile.Click += new System.EventHandler(this.btnSheet4LoadFile_Click);
+            // 
+            // textBoxSheet4LoadFile
+            // 
+            this.textBoxSheet4LoadFile.Location = new System.Drawing.Point(6, 94);
+            this.textBoxSheet4LoadFile.Multiline = true;
+            this.textBoxSheet4LoadFile.Name = "textBoxSheet4LoadFile";
+            this.textBoxSheet4LoadFile.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxSheet4LoadFile.Size = new System.Drawing.Size(249, 169);
+            this.textBoxSheet4LoadFile.TabIndex = 1;
+            // 
+            // btnSheet4SaveFile
+            // 
+            this.btnSheet4SaveFile.Location = new System.Drawing.Point(97, 17);
+            this.btnSheet4SaveFile.Name = "btnSheet4SaveFile";
+            this.btnSheet4SaveFile.Size = new System.Drawing.Size(75, 23);
+            this.btnSheet4SaveFile.TabIndex = 2;
+            this.btnSheet4SaveFile.Text = "Save";
+            this.btnSheet4SaveFile.UseVisualStyleBackColor = true;
+            this.btnSheet4SaveFile.Click += new System.EventHandler(this.btnSheet4SaveFile_Click);
+            // 
+            // btnSheet4SaveFileStream
+            // 
+            this.btnSheet4SaveFileStream.Location = new System.Drawing.Point(101, 57);
+            this.btnSheet4SaveFileStream.Name = "btnSheet4SaveFileStream";
+            this.btnSheet4SaveFileStream.Size = new System.Drawing.Size(89, 23);
+            this.btnSheet4SaveFileStream.TabIndex = 4;
+            this.btnSheet4SaveFileStream.Text = "Save(Stream)";
+            this.btnSheet4SaveFileStream.UseVisualStyleBackColor = true;
+            this.btnSheet4SaveFileStream.Click += new System.EventHandler(this.btnSheet4SaveFileStream_Click);
+            // 
+            // btnSheet4LoadFileStream
+            // 
+            this.btnSheet4LoadFileStream.Location = new System.Drawing.Point(6, 57);
+            this.btnSheet4LoadFileStream.Name = "btnSheet4LoadFileStream";
+            this.btnSheet4LoadFileStream.Size = new System.Drawing.Size(89, 23);
+            this.btnSheet4LoadFileStream.TabIndex = 3;
+            this.btnSheet4LoadFileStream.Text = "Load (Stream)";
+            this.btnSheet4LoadFileStream.UseVisualStyleBackColor = true;
+            this.btnSheet4LoadFileStream.Click += new System.EventHandler(this.btnSheet4LoadFileStream_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -381,6 +452,8 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -415,6 +488,12 @@
         private System.Windows.Forms.Button dbConnectInsertBtn;
         private System.Windows.Forms.Button dbConnectDropTableBtn;
         private System.Windows.Forms.Button dbConnectCreateTableBtn;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnSheet4LoadFile;
+        private System.Windows.Forms.TextBox textBoxSheet4LoadFile;
+        private System.Windows.Forms.Button btnSheet4SaveFile;
+        private System.Windows.Forms.Button btnSheet4SaveFileStream;
+        private System.Windows.Forms.Button btnSheet4LoadFileStream;
     }
 }
 

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -168,11 +170,11 @@ namespace WindowsFormsPractice
                 MessageBox.Show(dbConnect.getErrorString());
                 return;
             }
-            
+
         }
 
         private void dbConnectSelectBtn_Click(object sender, EventArgs e)
-        {            
+        {
             DBConnect dbConnect = new DBConnect();
             List<string> resultList = dbConnect.SelectTest();
 
@@ -184,5 +186,121 @@ namespace WindowsFormsPractice
             MessageBox.Show(finalResult);
         }
 
+        private void btnSheet4LoadFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog theDialog = new OpenFileDialog();
+            theDialog.Title = "Open Txt File";
+            theDialog.Filter = "TXT files|*.txt";
+            //theDialog.InitialDirectory = @"C:\";
+            if (theDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = theDialog.FileName.ToString();
+                if (File.Exists(filePath))
+                {
+                    textBoxSheet4LoadFile.Text = "";
+
+                    String lines;
+                    lines = File.ReadAllText(filePath);
+                    textBoxSheet4LoadFile.AppendText(lines);
+                    /*
+                    //load file context
+                    String[] lines = File.ReadAllLines(filePath);
+
+                    foreach(string line in lines)
+                    {
+                        textBoxSheet4LoadFile.AppendText(line);
+                        textBoxSheet4LoadFile.AppendText("\r\n");
+                    }*/
+                }
+                else
+                {
+                    MessageBox.Show("File not exist.");
+                }
+            }
+        }
+
+        private void btnSheet4SaveFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Txt File|*.txt";
+            saveFileDialog1.Title = "Save an txt File";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog1.FileName.ToString();
+                if (File.Exists(filePath))
+                {
+                   // MessageBox.Show("File exist. Overwrite it.");
+                }
+                string context = textBoxSheet4LoadFile.Text;
+                MessageBox.Show(context);
+                File.WriteAllText(filePath, context);
+
+            }
+        }
+
+        private void btnSheet4LoadFileStream_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog theDialog = new OpenFileDialog();
+            theDialog.Title = "Open Txt File";
+            theDialog.Filter = "TXT files|*.txt";
+            //theDialog.InitialDirectory = @"C:\";
+            if (theDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = theDialog.FileName.ToString();
+                if (File.Exists(filePath))
+                {
+                    textBoxSheet4LoadFile.Text = "";
+                    //using stream
+                    using (StreamReader sr = File.OpenText(filePath))
+                    {
+                        ArrayList lineList = new ArrayList();
+                        String s = "";
+                        while ((s = sr.ReadLine()) != null)
+                        {
+                            lineList.Add(s);
+                            textBoxSheet4LoadFile.AppendText(s+"\n");
+                        }
+
+                        int nLines = lineList.Count;
+                        MessageBox.Show($"{nLines} line read.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("File not exist.");
+                }
+            }
+        }
+
+        private void btnSheet4SaveFileStream_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Txt File|*.txt";
+            saveFileDialog1.Title = "Save an txt File";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog1.FileName.ToString();
+                if (File.Exists(filePath))
+                {
+                    // MessageBox.Show("File exist. Overwrite it.");
+                }
+                //using (StreamWriter sr = File.AppendText(filePath))
+                using (StreamWriter sr = new StreamWriter(filePath, false))//overwrite
+                {
+                    String context = textBoxSheet4LoadFile.Text;
+                    string[] lines = context.Split('\n');
+                    foreach (string line in lines)
+                    {
+                        if(line.Length == 0) { continue; }
+                        sr.WriteLine(line);
+                    }
+                    sr.Close();
+                }
+
+                MessageBox.Show("Saved");
+
+
+            }
+        }
     }
 }
