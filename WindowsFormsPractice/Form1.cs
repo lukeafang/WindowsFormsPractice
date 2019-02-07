@@ -80,6 +80,109 @@ namespace WindowsFormsPractice
             MessageBox.Show(text);
         }
 
+        private void dbConnectBtn_Click(object sender, EventArgs e)
+        {
+            DBConnect dbConnect = new DBConnect();
+
+            //test connection
+            if (dbConnect.Connect())
+            {
+                //disconnect
+                if (dbConnect.Disconnect())
+                {
+                    MessageBox.Show("Connect Test Success.");
+                }
+                else
+                {
+                    MessageBox.Show(dbConnect.getErrorString());
+                }
+            }
+            else
+            {
+                MessageBox.Show(dbConnect.getErrorString());
+            }
+
+        }
+
+        private void dbConnectCreateTableBtn_Click(object sender, EventArgs e)
+        {
+            //test create table "menu"
+            DBConnect dbConnect = new DBConnect();
+            string queryString = "";
+            //queryString = $"create table if not exists menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
+            queryString = $"create table menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
+            dbConnect.executeQuery(queryString);
+            if (dbConnect.IsSuccess())
+            {
+                MessageBox.Show("Table Created");
+            }
+            else
+            {
+                MessageBox.Show(dbConnect.getErrorString());
+            }
+        }
+
+        private void dbConnectDropTableBtn_Click(object sender, EventArgs e)
+        {
+            //test drop table "menu"
+            DBConnect dbConnect = new DBConnect();
+            string queryString = "";
+            //queryString = $"drop table if exists menu;";
+            queryString = $"drop table menu;";
+            dbConnect.executeQuery(queryString);
+            if (dbConnect.IsSuccess())
+            {
+                MessageBox.Show("Table Droped");
+            }
+            else
+            {
+                MessageBox.Show(dbConnect.getErrorString());
+            }
+        }
+
+        private void dbConnectInsertBtn_Click(object sender, EventArgs e)
+        {
+            //test insert data into table "menu"
+            DBConnect dbConnect = new DBConnect();
+            string queryString = "";
+            queryString = $"INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', NOW());";
+            dbConnect.executeQuery(queryString);
+            if (dbConnect.IsSuccess())
+            {
+                MessageBox.Show("Inserted first record");
+            }
+            else
+            {
+                MessageBox.Show(dbConnect.getErrorString());
+                return;
+            }
+
+            queryString = $"INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', NOW());";
+            dbConnect.executeQuery(queryString);
+            if (dbConnect.IsSuccess())
+            {
+                MessageBox.Show("Inserted second record");
+            }
+            else
+            {
+                MessageBox.Show(dbConnect.getErrorString());
+                return;
+            }
+            
+        }
+
+        private void dbConnectSelectBtn_Click(object sender, EventArgs e)
+        {            
+            DBConnect dbConnect = new DBConnect();
+            List<string> resultList = dbConnect.SelectTest();
+
+            string finalResult = "";
+            foreach (string result in resultList)
+            {
+                finalResult += result + '\n';
+            }
+            MessageBox.Show(finalResult);
+        }
 
     }
 }
