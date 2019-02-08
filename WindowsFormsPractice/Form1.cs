@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace WindowsFormsPractice
 {
@@ -301,6 +303,42 @@ namespace WindowsFormsPractice
 
 
             }
+        }
+
+        private void btnSheet5SaveObject_Click(object sender, EventArgs e)
+        {
+            //get working path.
+            string workPath = Application.StartupPath;
+            string filePath = workPath + @"\test.obj";
+
+            User obj = new User(666, "testUser");
+
+            //create the file stream
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+
+            //serizlize the object
+            formatter.Serialize(stream, obj);
+            stream.Close();
+
+            //
+            MessageBox.Show("User Object saved.");
+        }
+
+        private void btnSheet5LoadObject_Click(object sender, EventArgs e)
+        {
+            //get working path.
+            string workPath = Application.StartupPath;
+            string filePath = workPath + @"\test.obj";
+
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            User objnew = (User)formatter.Deserialize(stream);
+
+            string finalStr = "";
+            finalStr = $"ID: {objnew.ID}, Name: {objnew.Name}.";
+            MessageBox.Show(finalStr);
+
         }
     }
 }

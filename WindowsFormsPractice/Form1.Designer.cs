@@ -62,6 +62,9 @@
             this.btnSheet4SaveFile = new System.Windows.Forms.Button();
             this.btnSheet4SaveFileStream = new System.Windows.Forms.Button();
             this.btnSheet4LoadFileStream = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnSheet5SaveObject = new System.Windows.Forms.Button();
+            this.btnSheet5LoadObject = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -71,6 +74,7 @@
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -85,6 +89,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
@@ -435,6 +440,37 @@
             this.btnSheet4LoadFileStream.UseVisualStyleBackColor = true;
             this.btnSheet4LoadFileStream.Click += new System.EventHandler(this.btnSheet4LoadFileStream_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnSheet5LoadObject);
+            this.groupBox6.Controls.Add(this.btnSheet5SaveObject);
+            this.groupBox6.Location = new System.Drawing.Point(372, 0);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(130, 112);
+            this.groupBox6.TabIndex = 4;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Sheet5";
+            // 
+            // btnSheet5SaveObject
+            // 
+            this.btnSheet5SaveObject.Location = new System.Drawing.Point(15, 30);
+            this.btnSheet5SaveObject.Name = "btnSheet5SaveObject";
+            this.btnSheet5SaveObject.Size = new System.Drawing.Size(99, 24);
+            this.btnSheet5SaveObject.TabIndex = 0;
+            this.btnSheet5SaveObject.Text = "Save Object";
+            this.btnSheet5SaveObject.UseVisualStyleBackColor = true;
+            this.btnSheet5SaveObject.Click += new System.EventHandler(this.btnSheet5SaveObject_Click);
+            // 
+            // btnSheet5LoadObject
+            // 
+            this.btnSheet5LoadObject.Location = new System.Drawing.Point(15, 60);
+            this.btnSheet5LoadObject.Name = "btnSheet5LoadObject";
+            this.btnSheet5LoadObject.Size = new System.Drawing.Size(99, 24);
+            this.btnSheet5LoadObject.TabIndex = 1;
+            this.btnSheet5LoadObject.Text = "Load Object";
+            this.btnSheet5LoadObject.UseVisualStyleBackColor = true;
+            this.btnSheet5LoadObject.Click += new System.EventHandler(this.btnSheet5LoadObject_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -454,6 +490,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -494,6 +531,9 @@
         private System.Windows.Forms.Button btnSheet4SaveFile;
         private System.Windows.Forms.Button btnSheet4SaveFileStream;
         private System.Windows.Forms.Button btnSheet4LoadFileStream;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnSheet5LoadObject;
+        private System.Windows.Forms.Button btnSheet5SaveObject;
     }
 }
 
