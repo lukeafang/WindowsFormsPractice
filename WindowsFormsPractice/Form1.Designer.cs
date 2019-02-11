@@ -30,6 +30,11 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnDelegateTest = new System.Windows.Forms.Button();
+            this.btnSheet6IsAsCompare = new System.Windows.Forms.Button();
+            this.btnSheet6CreateArray = new System.Windows.Forms.Button();
+            this.btnSheet6TestNullableValue = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnSheet5LoadObject = new System.Windows.Forms.Button();
             this.btnSheet5SaveObject = new System.Windows.Forms.Button();
@@ -65,13 +70,15 @@
             this.dbConnectCreateTableBtn = new System.Windows.Forms.Button();
             this.dbConnectSelectBtn = new System.Windows.Forms.Button();
             this.dbConnectBtn = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.btnSheet6TestNullableValue = new System.Windows.Forms.Button();
-            this.btnSheet6CreateArray = new System.Windows.Forms.Button();
-            this.btnSheet6IsAsCompare = new System.Windows.Forms.Button();
-            this.btnDelegateTest = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnSheet7OpenWindow = new System.Windows.Forms.Button();
+            this.txtSheet7Name = new System.Windows.Forms.TextBox();
+            this.lblSheet7Name = new System.Windows.Forms.Label();
+            this.txtSheet7ID = new System.Windows.Forms.TextBox();
+            this.lblSheet7ID = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -80,7 +87,7 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -90,11 +97,12 @@
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(686, 449);
+            this.tabControl1.Size = new System.Drawing.Size(860, 449);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox8);
             this.tabPage1.Controls.Add(this.groupBox7);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.groupBox5);
@@ -104,10 +112,63 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(678, 423);
+            this.tabPage1.Size = new System.Drawing.Size(852, 423);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Basic Controller";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnDelegateTest);
+            this.groupBox7.Controls.Add(this.btnSheet6IsAsCompare);
+            this.groupBox7.Controls.Add(this.btnSheet6CreateArray);
+            this.groupBox7.Controls.Add(this.btnSheet6TestNullableValue);
+            this.groupBox7.Location = new System.Drawing.Point(509, 0);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(152, 198);
+            this.groupBox7.TabIndex = 5;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Sheet6";
+            // 
+            // btnDelegateTest
+            // 
+            this.btnDelegateTest.Location = new System.Drawing.Point(7, 146);
+            this.btnDelegateTest.Name = "btnDelegateTest";
+            this.btnDelegateTest.Size = new System.Drawing.Size(137, 35);
+            this.btnDelegateTest.TabIndex = 3;
+            this.btnDelegateTest.Text = "Delegate Test";
+            this.btnDelegateTest.UseVisualStyleBackColor = true;
+            this.btnDelegateTest.Click += new System.EventHandler(this.btnDelegateTest_Click);
+            // 
+            // btnSheet6IsAsCompare
+            // 
+            this.btnSheet6IsAsCompare.Location = new System.Drawing.Point(7, 105);
+            this.btnSheet6IsAsCompare.Name = "btnSheet6IsAsCompare";
+            this.btnSheet6IsAsCompare.Size = new System.Drawing.Size(137, 35);
+            this.btnSheet6IsAsCompare.TabIndex = 2;
+            this.btnSheet6IsAsCompare.Text = "Is And As";
+            this.btnSheet6IsAsCompare.UseVisualStyleBackColor = true;
+            this.btnSheet6IsAsCompare.Click += new System.EventHandler(this.btnSheet6IsAsCompare_Click);
+            // 
+            // btnSheet6CreateArray
+            // 
+            this.btnSheet6CreateArray.Location = new System.Drawing.Point(7, 61);
+            this.btnSheet6CreateArray.Name = "btnSheet6CreateArray";
+            this.btnSheet6CreateArray.Size = new System.Drawing.Size(137, 35);
+            this.btnSheet6CreateArray.TabIndex = 1;
+            this.btnSheet6CreateArray.Text = "Create Array";
+            this.btnSheet6CreateArray.UseVisualStyleBackColor = true;
+            this.btnSheet6CreateArray.Click += new System.EventHandler(this.btnSheet6CreateArray_Click);
+            // 
+            // btnSheet6TestNullableValue
+            // 
+            this.btnSheet6TestNullableValue.Location = new System.Drawing.Point(7, 19);
+            this.btnSheet6TestNullableValue.Name = "btnSheet6TestNullableValue";
+            this.btnSheet6TestNullableValue.Size = new System.Drawing.Size(137, 35);
+            this.btnSheet6TestNullableValue.TabIndex = 0;
+            this.btnSheet6TestNullableValue.Text = "Test Nullable value";
+            this.btnSheet6TestNullableValue.UseVisualStyleBackColor = true;
+            this.btnSheet6TestNullableValue.Click += new System.EventHandler(this.btnSheet6TestNullableValue_Click);
             // 
             // groupBox6
             // 
@@ -478,69 +539,74 @@
             this.dbConnectBtn.UseVisualStyleBackColor = true;
             this.dbConnectBtn.Click += new System.EventHandler(this.dbConnectBtn_Click);
             // 
-            // groupBox7
+            // groupBox8
             // 
-            this.groupBox7.Controls.Add(this.btnDelegateTest);
-            this.groupBox7.Controls.Add(this.btnSheet6IsAsCompare);
-            this.groupBox7.Controls.Add(this.btnSheet6CreateArray);
-            this.groupBox7.Controls.Add(this.btnSheet6TestNullableValue);
-            this.groupBox7.Location = new System.Drawing.Point(509, 0);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(152, 225);
-            this.groupBox7.TabIndex = 5;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Sheet6";
+            this.groupBox8.Controls.Add(this.txtSheet7ID);
+            this.groupBox8.Controls.Add(this.lblSheet7ID);
+            this.groupBox8.Controls.Add(this.txtSheet7Name);
+            this.groupBox8.Controls.Add(this.lblSheet7Name);
+            this.groupBox8.Controls.Add(this.btnSheet7OpenWindow);
+            this.groupBox8.Location = new System.Drawing.Point(509, 205);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(152, 182);
+            this.groupBox8.TabIndex = 6;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Sheet7";
             // 
-            // btnSheet6TestNullableValue
+            // btnSheet7OpenWindow
             // 
-            this.btnSheet6TestNullableValue.Location = new System.Drawing.Point(7, 19);
-            this.btnSheet6TestNullableValue.Name = "btnSheet6TestNullableValue";
-            this.btnSheet6TestNullableValue.Size = new System.Drawing.Size(137, 35);
-            this.btnSheet6TestNullableValue.TabIndex = 0;
-            this.btnSheet6TestNullableValue.Text = "Test Nullable value";
-            this.btnSheet6TestNullableValue.UseVisualStyleBackColor = true;
-            this.btnSheet6TestNullableValue.Click += new System.EventHandler(this.btnSheet6TestNullableValue_Click);
+            this.btnSheet7OpenWindow.Location = new System.Drawing.Point(6, 21);
+            this.btnSheet7OpenWindow.Name = "btnSheet7OpenWindow";
+            this.btnSheet7OpenWindow.Size = new System.Drawing.Size(137, 33);
+            this.btnSheet7OpenWindow.TabIndex = 0;
+            this.btnSheet7OpenWindow.Text = "Open Window";
+            this.btnSheet7OpenWindow.UseVisualStyleBackColor = true;
+            this.btnSheet7OpenWindow.Click += new System.EventHandler(this.btnSheet7OpenWindow_Click);
             // 
-            // btnSheet6CreateArray
+            // txtSheet7Name
             // 
-            this.btnSheet6CreateArray.Location = new System.Drawing.Point(7, 61);
-            this.btnSheet6CreateArray.Name = "btnSheet6CreateArray";
-            this.btnSheet6CreateArray.Size = new System.Drawing.Size(137, 35);
-            this.btnSheet6CreateArray.TabIndex = 1;
-            this.btnSheet6CreateArray.Text = "Create Array";
-            this.btnSheet6CreateArray.UseVisualStyleBackColor = true;
-            this.btnSheet6CreateArray.Click += new System.EventHandler(this.btnSheet6CreateArray_Click);
+            this.txtSheet7Name.Location = new System.Drawing.Point(50, 121);
+            this.txtSheet7Name.Name = "txtSheet7Name";
+            this.txtSheet7Name.ReadOnly = true;
+            this.txtSheet7Name.Size = new System.Drawing.Size(94, 22);
+            this.txtSheet7Name.TabIndex = 14;
             // 
-            // btnSheet6IsAsCompare
+            // lblSheet7Name
             // 
-            this.btnSheet6IsAsCompare.Location = new System.Drawing.Point(7, 105);
-            this.btnSheet6IsAsCompare.Name = "btnSheet6IsAsCompare";
-            this.btnSheet6IsAsCompare.Size = new System.Drawing.Size(137, 35);
-            this.btnSheet6IsAsCompare.TabIndex = 2;
-            this.btnSheet6IsAsCompare.Text = "Is And As";
-            this.btnSheet6IsAsCompare.UseVisualStyleBackColor = true;
-            this.btnSheet6IsAsCompare.Click += new System.EventHandler(this.btnSheet6IsAsCompare_Click);
+            this.lblSheet7Name.AutoSize = true;
+            this.lblSheet7Name.Location = new System.Drawing.Point(6, 124);
+            this.lblSheet7Name.Name = "lblSheet7Name";
+            this.lblSheet7Name.Size = new System.Drawing.Size(38, 12);
+            this.lblSheet7Name.TabIndex = 13;
+            this.lblSheet7Name.Text = "Name: ";
             // 
-            // btnDelegateTest
+            // txtSheet7ID
             // 
-            this.btnDelegateTest.Location = new System.Drawing.Point(7, 146);
-            this.btnDelegateTest.Name = "btnDelegateTest";
-            this.btnDelegateTest.Size = new System.Drawing.Size(137, 35);
-            this.btnDelegateTest.TabIndex = 3;
-            this.btnDelegateTest.Text = "Delegate Test";
-            this.btnDelegateTest.UseVisualStyleBackColor = true;
-            this.btnDelegateTest.Click += new System.EventHandler(this.btnDelegateTest_Click);
+            this.txtSheet7ID.Location = new System.Drawing.Point(51, 80);
+            this.txtSheet7ID.Name = "txtSheet7ID";
+            this.txtSheet7ID.Size = new System.Drawing.Size(94, 22);
+            this.txtSheet7ID.TabIndex = 16;
+            // 
+            // lblSheet7ID
+            // 
+            this.lblSheet7ID.AutoSize = true;
+            this.lblSheet7ID.Location = new System.Drawing.Point(7, 83);
+            this.lblSheet7ID.Name = "lblSheet7ID";
+            this.lblSheet7ID.Size = new System.Drawing.Size(38, 12);
+            this.lblSheet7ID.TabIndex = 15;
+            this.lblSheet7ID.Text = "Name: ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 468);
+            this.ClientSize = new System.Drawing.Size(885, 470);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Practice";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -551,7 +617,8 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -600,6 +667,12 @@
         private System.Windows.Forms.Button btnSheet6CreateArray;
         private System.Windows.Forms.Button btnSheet6IsAsCompare;
         private System.Windows.Forms.Button btnDelegateTest;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button btnSheet7OpenWindow;
+        private System.Windows.Forms.TextBox txtSheet7Name;
+        private System.Windows.Forms.Label lblSheet7Name;
+        private System.Windows.Forms.TextBox txtSheet7ID;
+        private System.Windows.Forms.Label lblSheet7ID;
     }
 }
 

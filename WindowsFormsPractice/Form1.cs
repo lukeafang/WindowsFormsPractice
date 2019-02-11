@@ -19,6 +19,9 @@ namespace WindowsFormsPractice
         //define delegate 
         public delegate void MyDelegate(string name);
 
+        public delegate void SendValueDelegate(string pValue);
+        public event SendValueDelegate SendValueCallback;
+
         public Form1()
         {
             InitializeComponent();
@@ -450,6 +453,18 @@ namespace WindowsFormsPractice
                 Console.WriteLine("Show function 3: {0}", m);
             };
             delegateObject_3("anonymous method");
+
+            //try callback
+            Console.WriteLine("Try callback function");
+            DelCallbackTest t1 = new DelCallbackTest();
+
+            //try lambda
+            Console.WriteLine("Try Lambda");
+            MyDelegate del_lambda = (string s) =>
+            {
+                Console.WriteLine("Lambda: " + s);
+            };
+            del_lambda("Hello!");
         }
 
         public static void customShow1(string value)
@@ -460,6 +475,26 @@ namespace WindowsFormsPractice
         public static void customShow2(string value)
         {
             Console.WriteLine("Custom Show 2 : {0}", value);
+        }
+
+        
+
+        private void btnSheet7OpenWindow_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            //send value to new window even
+            this.SendValueCallback += new SendValueDelegate(f2.ReceiveValueCallbackFunc);
+            //invoke function
+            this.SendValueCallback(txtSheet7ID.Text);
+
+            //get value from new window event
+            f2.ReturnValueCallback += new Form2.ReturnValueDelegate(this.updateUIValueSheet7);
+            f2.ShowDialog();
+        }
+
+        private void updateUIValueSheet7(string name)
+        {
+            txtSheet7Name.Text = name;
         }
     }
 }
