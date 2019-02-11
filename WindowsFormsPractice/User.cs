@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace WindowsFormsPractice
 {
     [Serializable]
-    class User
+    class User : Person
     {
         public int ID;
-        public string Name;
+        
 
         public User()
         {

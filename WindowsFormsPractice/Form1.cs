@@ -16,6 +16,9 @@ namespace WindowsFormsPractice
 {
     public partial class Form1 : Form
     {
+        //define delegate 
+        public delegate void MyDelegate(string name);
+
         public Form1()
         {
             InitializeComponent();
@@ -339,6 +342,124 @@ namespace WindowsFormsPractice
             finalStr = $"ID: {objnew.ID}, Name: {objnew.Name}.";
             MessageBox.Show(finalStr);
 
+        }
+
+        private void btnSheet6TestNullableValue_Click(object sender, EventArgs e)
+        {
+            //define a nullable value
+            //Nullable<int> someNullValue = null;
+            int? someNullValue = null;
+            
+            //check value is null or not
+            if (someNullValue.HasValue)
+            {
+                MessageBox.Show("value is not null");
+            }
+
+            if (someNullValue == null)
+            {
+                MessageBox.Show("Value is null.");
+            }
+
+            //assign a nullable to variable, if nullable value is null, assign value as 666
+            int someIntValue = someNullValue ?? 666;
+            MessageBox.Show("Assigned value is: " + someIntValue);
+
+            
+        }
+
+        private void btnSheet6CreateArray_Click(object sender, EventArgs e)
+        {
+            //generate array with repeat value
+            
+            // creates bool array of size 10 with default value "true"
+            bool[] boolArray = Enumerable.Repeat(true, 10).ToArray();
+            Console.WriteLine(boolArray[0]);
+
+            // creates int array of size 10 with default value "555"
+            int[] intArray = Enumerable.Repeat(555, 10).ToArray();
+            Console.WriteLine(intArray[0]);
+        }
+
+        private void btnSheet6IsAsCompare_Click(object sender, EventArgs e)
+        {
+            //is test
+            Person o1 = new Person();
+            User o2 = new User();
+
+            bool bValue = false;
+            bValue = o1 is Object;
+            Console.WriteLine("o1 is Object: " + bValue);
+
+            bValue = o1 is User;
+            Console.WriteLine("o1 is User: " + bValue);
+
+            bValue = o2 is Person;
+            Console.WriteLine("o2 is Person: " + bValue);
+
+            bValue = o2 is User;
+            Console.WriteLine("o2 is User: " + bValue);
+
+            //as test
+            Object[] o = new object[4];
+
+            o[0] = new Person();
+            o[1] = new User();
+            o[2] = "Hello";
+            o[3] = 555;
+
+            for(int i=0;i<o.Length;i++)
+            {
+                //using as operator
+                Person p1 = o[i] as Person;
+                Console.WriteLine("{0}", i);
+
+                //as operator success
+                if(p1 != null)
+                {
+                    Console.WriteLine("It's a person.");
+                }
+                else
+                {
+                    Console.WriteLine("It's not a person");
+                }
+            }
+
+
+        }
+
+        private void btnDelegateTest_Click(object sender, EventArgs e)
+        {
+            //create a delegate object
+            MyDelegate delegateObject_1 = new MyDelegate(customShow1);
+            delegateObject_1("hello");
+
+            //create other delegate object
+            MyDelegate delegateOBject_2 = customShow1;
+
+            //add new method into delegate object
+            delegateOBject_2 += new MyDelegate(customShow2);
+
+            //either way to call function
+            //delegateOBject_2.Invoke("Yo. Invoke.");
+            delegateOBject_2("Bye");
+
+            //Anonymous method
+            MyDelegate delegateObject_3 = delegate (string m)
+            {
+                Console.WriteLine("Show function 3: {0}", m);
+            };
+            delegateObject_3("anonymous method");
+        }
+
+        public static void customShow1(string value)
+        {
+            Console.WriteLine("Custom Show 1 : {0}", value);
+        }
+
+        public static void customShow2(string value)
+        {
+            Console.WriteLine("Custom Show 2 : {0}", value);
         }
     }
 }
