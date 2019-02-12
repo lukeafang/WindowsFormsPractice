@@ -492,9 +492,10 @@ namespace WindowsFormsPractice
             f2.ShowDialog();
         }
 
-        private void updateUIValueSheet7(string name)
+        private void updateUIValueSheet7(string name, string password)
         {
             txtSheet7Name.Text = name;
+            txtSheet7Password.Text = password;
         }
     }
 }

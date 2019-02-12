@@ -76,6 +76,8 @@
             this.lblSheet7Name = new System.Windows.Forms.Label();
             this.txtSheet7ID = new System.Windows.Forms.TextBox();
             this.lblSheet7ID = new System.Windows.Forms.Label();
+            this.txtSheet7Password = new System.Windows.Forms.TextBox();
+            this.lblSheet7Password = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -541,6 +543,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.txtSheet7Password);
+            this.groupBox8.Controls.Add(this.lblSheet7Password);
             this.groupBox8.Controls.Add(this.txtSheet7ID);
             this.groupBox8.Controls.Add(this.lblSheet7ID);
             this.groupBox8.Controls.Add(this.txtSheet7Name);
@@ -592,9 +596,25 @@
             this.lblSheet7ID.AutoSize = true;
             this.lblSheet7ID.Location = new System.Drawing.Point(7, 83);
             this.lblSheet7ID.Name = "lblSheet7ID";
-            this.lblSheet7ID.Size = new System.Drawing.Size(38, 12);
+            this.lblSheet7ID.Size = new System.Drawing.Size(20, 12);
             this.lblSheet7ID.TabIndex = 15;
-            this.lblSheet7ID.Text = "Name: ";
+            this.lblSheet7ID.Text = "ID:";
+            // 
+            // txtSheet7Password
+            // 
+            this.txtSheet7Password.Location = new System.Drawing.Point(49, 149);
+            this.txtSheet7Password.Name = "txtSheet7Password";
+            this.txtSheet7Password.Size = new System.Drawing.Size(94, 22);
+            this.txtSheet7Password.TabIndex = 18;
+            // 
+            // lblSheet7Password
+            // 
+            this.lblSheet7Password.AutoSize = true;
+            this.lblSheet7Password.Location = new System.Drawing.Point(5, 152);
+            this.lblSheet7Password.Name = "lblSheet7Password";
+            this.lblSheet7Password.Size = new System.Drawing.Size(30, 12);
+            this.lblSheet7Password.TabIndex = 17;
+            this.lblSheet7Password.Text = "Pass: ";
             // 
             // Form1
             // 
@@ -673,6 +693,8 @@
         private System.Windows.Forms.Label lblSheet7Name;
         private System.Windows.Forms.TextBox txtSheet7ID;
         private System.Windows.Forms.Label lblSheet7ID;
+        private System.Windows.Forms.TextBox txtSheet7Password;
+        private System.Windows.Forms.Label lblSheet7Password;
     }
 }
 

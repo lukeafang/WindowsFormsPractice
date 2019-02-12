@@ -12,7 +12,7 @@ namespace WindowsFormsPractice
 {
     public partial class Form2 : Form
     {
-        public delegate void ReturnValueDelegate(string pValue);
+        public delegate void ReturnValueDelegate(string pName, string pPassword);
         public event ReturnValueDelegate ReturnValueCallback;
 
         public Form2()
@@ -22,7 +22,7 @@ namespace WindowsFormsPractice
 
         private void btnNewWindowSubmit_Click(object sender, EventArgs e)
         {
-            ReturnValueCallback(txtNewWindowName.Text);
+            ReturnValueCallback(txtNewWindowName.Text, txtNewWindowPassword.Text);
             this.Close();
         }
 

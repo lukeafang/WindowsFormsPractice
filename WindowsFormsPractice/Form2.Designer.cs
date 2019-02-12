@@ -33,6 +33,8 @@
             this.btnNewWindowSubmit = new System.Windows.Forms.Button();
             this.txtNewWindowID = new System.Windows.Forms.TextBox();
             this.lblNewWindowID = new System.Windows.Forms.Label();
+            this.txtNewWindowPassword = new System.Windows.Forms.TextBox();
+            this.lblNewWindowPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNewWindowName
@@ -78,11 +80,30 @@
             this.lblNewWindowID.TabIndex = 18;
             this.lblNewWindowID.Text = "ID:";
             // 
+            // txtNewWindowPassword
+            // 
+            this.txtNewWindowPassword.Location = new System.Drawing.Point(62, 68);
+            this.txtNewWindowPassword.Name = "txtNewWindowPassword";
+            this.txtNewWindowPassword.PasswordChar = '*';
+            this.txtNewWindowPassword.Size = new System.Drawing.Size(94, 22);
+            this.txtNewWindowPassword.TabIndex = 21;
+            // 
+            // lblNewWindowPassword
+            // 
+            this.lblNewWindowPassword.AutoSize = true;
+            this.lblNewWindowPassword.Location = new System.Drawing.Point(18, 71);
+            this.lblNewWindowPassword.Name = "lblNewWindowPassword";
+            this.lblNewWindowPassword.Size = new System.Drawing.Size(30, 12);
+            this.lblNewWindowPassword.TabIndex = 20;
+            this.lblNewWindowPassword.Text = "Pass: ";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 198);
+            this.Controls.Add(this.txtNewWindowPassword);
+            this.Controls.Add(this.lblNewWindowPassword);
             this.Controls.Add(this.txtNewWindowID);
             this.Controls.Add(this.lblNewWindowID);
             this.Controls.Add(this.btnNewWindowSubmit);
@@ -102,5 +123,7 @@
         private System.Windows.Forms.Button btnNewWindowSubmit;
         private System.Windows.Forms.TextBox txtNewWindowID;
         private System.Windows.Forms.Label lblNewWindowID;
+        private System.Windows.Forms.TextBox txtNewWindowPassword;
+        private System.Windows.Forms.Label lblNewWindowPassword;
     }
 }
