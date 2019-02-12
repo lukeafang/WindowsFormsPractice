@@ -497,5 +497,18 @@ namespace WindowsFormsPractice
             txtSheet7Name.Text = name;
             txtSheet7Password.Text = password;
         }
+
+        private void btnSheet6Indexer_Click(object sender, EventArgs e)
+        {
+            DemoIndexer d = new DemoIndexer();
+            for(int i=0;i<10;i++)
+            {
+                d[i] = $"Name_{i}";
+            }
+
+            Console.WriteLine(d[2]);
+            Console.WriteLine(d[3]);
+            Console.WriteLine(d[13]);
+        }
     }
 }

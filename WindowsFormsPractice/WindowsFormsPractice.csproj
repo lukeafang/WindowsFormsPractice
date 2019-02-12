@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="DBConnect.cs" />
     <Compile Include="DelCallbackTest.cs" />
+    <Compile Include="DemoIndexer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

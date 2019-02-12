@@ -78,6 +78,7 @@
             this.lblSheet7ID = new System.Windows.Forms.Label();
             this.txtSheet7Password = new System.Windows.Forms.TextBox();
             this.lblSheet7Password = new System.Windows.Forms.Label();
+            this.btnSheet6Indexer = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -121,13 +122,14 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.btnSheet6Indexer);
             this.groupBox7.Controls.Add(this.btnDelegateTest);
             this.groupBox7.Controls.Add(this.btnSheet6IsAsCompare);
             this.groupBox7.Controls.Add(this.btnSheet6CreateArray);
             this.groupBox7.Controls.Add(this.btnSheet6TestNullableValue);
             this.groupBox7.Location = new System.Drawing.Point(509, 0);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(152, 198);
+            this.groupBox7.Size = new System.Drawing.Size(152, 238);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Sheet6";
@@ -550,9 +552,9 @@
             this.groupBox8.Controls.Add(this.txtSheet7Name);
             this.groupBox8.Controls.Add(this.lblSheet7Name);
             this.groupBox8.Controls.Add(this.btnSheet7OpenWindow);
-            this.groupBox8.Location = new System.Drawing.Point(509, 205);
+            this.groupBox8.Location = new System.Drawing.Point(509, 245);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(152, 182);
+            this.groupBox8.Size = new System.Drawing.Size(152, 142);
             this.groupBox8.TabIndex = 6;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Sheet7";
@@ -569,7 +571,7 @@
             // 
             // txtSheet7Name
             // 
-            this.txtSheet7Name.Location = new System.Drawing.Point(50, 121);
+            this.txtSheet7Name.Location = new System.Drawing.Point(50, 86);
             this.txtSheet7Name.Name = "txtSheet7Name";
             this.txtSheet7Name.ReadOnly = true;
             this.txtSheet7Name.Size = new System.Drawing.Size(94, 22);
@@ -578,7 +580,7 @@
             // lblSheet7Name
             // 
             this.lblSheet7Name.AutoSize = true;
-            this.lblSheet7Name.Location = new System.Drawing.Point(6, 124);
+            this.lblSheet7Name.Location = new System.Drawing.Point(6, 89);
             this.lblSheet7Name.Name = "lblSheet7Name";
             this.lblSheet7Name.Size = new System.Drawing.Size(38, 12);
             this.lblSheet7Name.TabIndex = 13;
@@ -586,7 +588,7 @@
             // 
             // txtSheet7ID
             // 
-            this.txtSheet7ID.Location = new System.Drawing.Point(51, 80);
+            this.txtSheet7ID.Location = new System.Drawing.Point(49, 58);
             this.txtSheet7ID.Name = "txtSheet7ID";
             this.txtSheet7ID.Size = new System.Drawing.Size(94, 22);
             this.txtSheet7ID.TabIndex = 16;
@@ -594,7 +596,7 @@
             // lblSheet7ID
             // 
             this.lblSheet7ID.AutoSize = true;
-            this.lblSheet7ID.Location = new System.Drawing.Point(7, 83);
+            this.lblSheet7ID.Location = new System.Drawing.Point(5, 61);
             this.lblSheet7ID.Name = "lblSheet7ID";
             this.lblSheet7ID.Size = new System.Drawing.Size(20, 12);
             this.lblSheet7ID.TabIndex = 15;
@@ -602,19 +604,30 @@
             // 
             // txtSheet7Password
             // 
-            this.txtSheet7Password.Location = new System.Drawing.Point(49, 149);
+            this.txtSheet7Password.Location = new System.Drawing.Point(50, 114);
             this.txtSheet7Password.Name = "txtSheet7Password";
+            this.txtSheet7Password.ReadOnly = true;
             this.txtSheet7Password.Size = new System.Drawing.Size(94, 22);
             this.txtSheet7Password.TabIndex = 18;
             // 
             // lblSheet7Password
             // 
             this.lblSheet7Password.AutoSize = true;
-            this.lblSheet7Password.Location = new System.Drawing.Point(5, 152);
+            this.lblSheet7Password.Location = new System.Drawing.Point(5, 117);
             this.lblSheet7Password.Name = "lblSheet7Password";
             this.lblSheet7Password.Size = new System.Drawing.Size(30, 12);
             this.lblSheet7Password.TabIndex = 17;
             this.lblSheet7Password.Text = "Pass: ";
+            // 
+            // btnSheet6Indexer
+            // 
+            this.btnSheet6Indexer.Location = new System.Drawing.Point(7, 187);
+            this.btnSheet6Indexer.Name = "btnSheet6Indexer";
+            this.btnSheet6Indexer.Size = new System.Drawing.Size(137, 35);
+            this.btnSheet6Indexer.TabIndex = 4;
+            this.btnSheet6Indexer.Text = "Indexer Test";
+            this.btnSheet6Indexer.UseVisualStyleBackColor = true;
+            this.btnSheet6Indexer.Click += new System.EventHandler(this.btnSheet6Indexer_Click);
             // 
             // Form1
             // 
@@ -695,6 +708,7 @@
         private System.Windows.Forms.Label lblSheet7ID;
         private System.Windows.Forms.TextBox txtSheet7Password;
         private System.Windows.Forms.Label lblSheet7Password;
+        private System.Windows.Forms.Button btnSheet6Indexer;
     }
 }
 
