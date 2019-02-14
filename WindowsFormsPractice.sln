@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsPractice", "WindowsFormsPractice\WindowsFormsPractice.csproj", "{B527DE25-8BAA-4EA9-A9D7-87D0CCA405E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsPractice.Test.Unit", "WindowsFormsPractice.Test.Unit\WindowsFormsPractice.Test.Unit.csproj", "{4EE5FA15-9A7D-4E1C-8551-C088318540CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B527DE25-8BAA-4EA9-A9D7-87D0CCA405E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B527DE25-8BAA-4EA9-A9D7-87D0CCA405E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B527DE25-8BAA-4EA9-A9D7-87D0CCA405E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EE5FA15-9A7D-4E1C-8551-C088318540CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE5FA15-9A7D-4E1C-8551-C088318540CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE5FA15-9A7D-4E1C-8551-C088318540CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE5FA15-9A7D-4E1C-8551-C088318540CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
