@@ -382,6 +382,9 @@ namespace WindowsFormsPractice
             // creates int array of size 10 with default value "555"
             int[] intArray = Enumerable.Repeat(555, 10).ToArray();
             Console.WriteLine(intArray[0]);
+
+            int[] marks = new int[5] { 99, 98, 92, 97, 95 };
+            Console.WriteLine(marks[3]);
         }
 
         private void btnSheet6IsAsCompare_Click(object sender, EventArgs e)
@@ -543,6 +546,45 @@ namespace WindowsFormsPractice
             Console.WriteLine(String.Format("(swap With Ref) Before run method. x = {0}, y = {1}", x, y));
             calculator.swapWithRef(ref x, ref y);
             Console.WriteLine(String.Format("(swap With Ref) After run method. x = {0}, y = {1}", x, y));
+        }
+
+        private void btnSheet8ParamTest_Click(object sender, EventArgs e)
+        {
+            CalculatorEngine calculator = new CalculatorEngine();
+            int sum = calculator.AddElements(512, 720, 250, 567, 889);
+            MessageBox.Show("Sum = " + sum);
+        }
+
+        private void btnOperatorTest_Click(object sender, EventArgs e)
+        {
+            Box Box1 = new Box();
+            Box Box2 = new Box();
+            Box Box3 = new Box();
+
+            double volume = 0.0;
+            
+            Box1.setLength(6.0);
+            Box1.setBreadth(7.0);
+            Box1.setHeight(5.0);
+            
+            //Box2.setLength(12.0);
+            //Box2.setBreadth(13.0);
+            //Box2.setHeight(10.0);
+
+            Box2.setLength(6.0);
+            Box2.setBreadth(7.0);
+            Box2.setHeight(5.0);
+
+            Console.WriteLine("Box1： {0}", Box1.ToString());
+            Console.WriteLine("Box2： {0}", Box2.ToString());
+
+            //add operator
+            Box3 = Box1 + Box2;
+            Console.WriteLine("Box3： {0}", Box3.ToString());
+
+            //compare operator
+            if (Box1 == Box2) Console.WriteLine("Box1 == Box2");
+            else Console.WriteLine("Box1 != Box2");
         }
     }
 }

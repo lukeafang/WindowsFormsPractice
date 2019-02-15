@@ -48,5 +48,16 @@ namespace WindowsFormsPractice
             x = y;
             y = temp;
         }
+
+        //defien params, then can send unknown number of param into method
+        public int AddElements(params int[] arr)
+        {
+            int sum = 0;
+            foreach(int i in arr)
+            {
+                sum += i;
+            }
+            return sum;
+        }
     }
 }

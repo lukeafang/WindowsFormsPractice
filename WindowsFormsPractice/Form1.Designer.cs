@@ -83,6 +83,8 @@
             this.btnSheet8SingletonTest = new System.Windows.Forms.Button();
             this.btnSheet8OutTest = new System.Windows.Forms.Button();
             this.btnSheet8RefTest = new System.Windows.Forms.Button();
+            this.btnSheet8ParamTest = new System.Windows.Forms.Button();
+            this.btnOperatorTest = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -637,6 +639,8 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.btnOperatorTest);
+            this.groupBox9.Controls.Add(this.btnSheet8ParamTest);
             this.groupBox9.Controls.Add(this.btnSheet8RefTest);
             this.groupBox9.Controls.Add(this.btnSheet8OutTest);
             this.groupBox9.Controls.Add(this.btnSheet8SingletonTest);
@@ -676,6 +680,26 @@
             this.btnSheet8RefTest.Text = "Ref Test";
             this.btnSheet8RefTest.UseVisualStyleBackColor = true;
             this.btnSheet8RefTest.Click += new System.EventHandler(this.btnSheet8RefTest_Click);
+            // 
+            // btnSheet8ParamTest
+            // 
+            this.btnSheet8ParamTest.Location = new System.Drawing.Point(6, 106);
+            this.btnSheet8ParamTest.Name = "btnSheet8ParamTest";
+            this.btnSheet8ParamTest.Size = new System.Drawing.Size(88, 23);
+            this.btnSheet8ParamTest.TabIndex = 3;
+            this.btnSheet8ParamTest.Text = "params Test";
+            this.btnSheet8ParamTest.UseVisualStyleBackColor = true;
+            this.btnSheet8ParamTest.Click += new System.EventHandler(this.btnSheet8ParamTest_Click);
+            // 
+            // btnOperatorTest
+            // 
+            this.btnOperatorTest.Location = new System.Drawing.Point(6, 135);
+            this.btnOperatorTest.Name = "btnOperatorTest";
+            this.btnOperatorTest.Size = new System.Drawing.Size(88, 23);
+            this.btnOperatorTest.TabIndex = 4;
+            this.btnOperatorTest.Text = "operator test";
+            this.btnOperatorTest.UseVisualStyleBackColor = true;
+            this.btnOperatorTest.Click += new System.EventHandler(this.btnOperatorTest_Click);
             // 
             // Form1
             // 
@@ -762,6 +786,8 @@
         private System.Windows.Forms.Button btnSheet8SingletonTest;
         private System.Windows.Forms.Button btnSheet8OutTest;
         private System.Windows.Forms.Button btnSheet8RefTest;
+        private System.Windows.Forms.Button btnSheet8ParamTest;
+        private System.Windows.Forms.Button btnOperatorTest;
     }
 }
 
