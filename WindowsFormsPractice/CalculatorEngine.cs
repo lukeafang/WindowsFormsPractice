@@ -26,5 +26,11 @@ namespace WindowsFormsPractice
             }
             return result;
         }
+
+        public void getIntValue(out int x)
+        {
+            int temp = 11;
+            x = 11;
+        }
     }
 }

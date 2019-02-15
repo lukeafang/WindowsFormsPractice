@@ -509,6 +509,25 @@ namespace WindowsFormsPractice
             Console.WriteLine(d[2]);
             Console.WriteLine(d[3]);
             Console.WriteLine(d[13]);
+
+        }
+
+        private void btnSheet8SingletonTest_Click(object sender, EventArgs e)
+        {
+            Singleton.Instance.WriteNumber();
+
+            int countNumber = Singleton.Instance.GetNumber();
+            MessageBox.Show("Count Number : " + countNumber);
+        }
+
+        private void btnSheet8OutTest_Click(object sender, EventArgs e)
+        {
+            CalculatorEngine calculator = new CalculatorEngine();
+            int x = 1;
+            Console.WriteLine("Before run method. x = " + x);
+            calculator.getIntValue(out x);
+            Console.WriteLine("After run method. x = " + x);
+
         }
     }
 }
