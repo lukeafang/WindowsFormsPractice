@@ -82,6 +82,7 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.btnSheet8SingletonTest = new System.Windows.Forms.Button();
             this.btnSheet8OutTest = new System.Windows.Forms.Button();
+            this.btnSheet8RefTest = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -636,6 +637,7 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.btnSheet8RefTest);
             this.groupBox9.Controls.Add(this.btnSheet8OutTest);
             this.groupBox9.Controls.Add(this.btnSheet8SingletonTest);
             this.groupBox9.Location = new System.Drawing.Point(667, 0);
@@ -664,6 +666,16 @@
             this.btnSheet8OutTest.Text = "Out Test";
             this.btnSheet8OutTest.UseVisualStyleBackColor = true;
             this.btnSheet8OutTest.Click += new System.EventHandler(this.btnSheet8OutTest_Click);
+            // 
+            // btnSheet8RefTest
+            // 
+            this.btnSheet8RefTest.Location = new System.Drawing.Point(6, 79);
+            this.btnSheet8RefTest.Name = "btnSheet8RefTest";
+            this.btnSheet8RefTest.Size = new System.Drawing.Size(88, 23);
+            this.btnSheet8RefTest.TabIndex = 2;
+            this.btnSheet8RefTest.Text = "Ref Test";
+            this.btnSheet8RefTest.UseVisualStyleBackColor = true;
+            this.btnSheet8RefTest.Click += new System.EventHandler(this.btnSheet8RefTest_Click);
             // 
             // Form1
             // 
@@ -749,6 +761,7 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button btnSheet8SingletonTest;
         private System.Windows.Forms.Button btnSheet8OutTest;
+        private System.Windows.Forms.Button btnSheet8RefTest;
     }
 }
 

@@ -529,5 +529,20 @@ namespace WindowsFormsPractice
             Console.WriteLine("After run method. x = " + x);
 
         }
+
+        private void btnSheet8RefTest_Click(object sender, EventArgs e)
+        {
+            CalculatorEngine calculator = new CalculatorEngine();
+            int x = 1, y = 2;
+            Console.WriteLine(String.Format("(swap Without Ref) Before run method. x = {0}, y = {1}", x, y));
+            calculator.swapWithoutRef(x, y);
+            Console.WriteLine(String.Format("(swap Without Ref) After run method. x = {0}, y = {1}", x, y));
+
+            x = 1;
+            y = 2;
+            Console.WriteLine(String.Format("(swap With Ref) Before run method. x = {0}, y = {1}", x, y));
+            calculator.swapWithRef(ref x, ref y);
+            Console.WriteLine(String.Format("(swap With Ref) After run method. x = {0}, y = {1}", x, y));
+        }
     }
 }

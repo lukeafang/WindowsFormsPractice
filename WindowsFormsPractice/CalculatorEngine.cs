@@ -32,5 +32,21 @@ namespace WindowsFormsPractice
             int temp = 11;
             x = 11;
         }
+
+        public void swapWithRef(ref int x, ref int y)
+        {
+            int temp;
+            temp = x;
+            x = y;
+            y = temp;
+        }
+
+        public void swapWithoutRef(int x, int y)
+        {
+            int temp;
+            temp = x;
+            x = y;
+            y = temp;
+        }
     }
 }
