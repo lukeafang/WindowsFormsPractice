@@ -1,15 +1,14 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsPractice
 {
-    class DBConnect
+    class DBConnection_MySQL : DBConnection
     {
-        
         private string server;
         private string database;
         private string port;
@@ -22,7 +21,7 @@ namespace WindowsFormsPractice
         private bool bError;
         private string errorMsg;
 
-        public DBConnect()
+        public DBConnection_MySQL()
         {
             initial();
         }
@@ -185,8 +184,5 @@ namespace WindowsFormsPractice
                 return results;
             }
         }
-
-
-
     }
 }

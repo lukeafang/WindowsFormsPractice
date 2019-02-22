@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsPractice
 {
@@ -92,7 +93,7 @@ namespace WindowsFormsPractice
 
         private void dbConnectBtn_Click(object sender, EventArgs e)
         {
-            DBConnect dbConnect = new DBConnect();
+            DBConnection dbConnect = new DBConnection_MySQL();
 
             //test connection
             if (dbConnect.Connect())
@@ -117,7 +118,7 @@ namespace WindowsFormsPractice
         private void dbConnectCreateTableBtn_Click(object sender, EventArgs e)
         {
             //test create table "menu"
-            DBConnect dbConnect = new DBConnect();
+            DBConnection dbConnect = new DBConnection_MySQL();
             string queryString = "";
             //queryString = $"create table if not exists menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
             queryString = $"create table menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
@@ -135,7 +136,7 @@ namespace WindowsFormsPractice
         private void dbConnectDropTableBtn_Click(object sender, EventArgs e)
         {
             //test drop table "menu"
-            DBConnect dbConnect = new DBConnect();
+            DBConnection dbConnect = new DBConnection_MySQL();
             string queryString = "";
             //queryString = $"drop table if exists menu;";
             queryString = $"drop table menu;";
@@ -153,7 +154,7 @@ namespace WindowsFormsPractice
         private void dbConnectInsertBtn_Click(object sender, EventArgs e)
         {
             //test insert data into table "menu"
-            DBConnect dbConnect = new DBConnect();
+            DBConnection dbConnect = new DBConnection_MySQL();
             string queryString = "";
             queryString = $"INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', NOW());";
             dbConnect.executeQuery(queryString);
@@ -183,7 +184,7 @@ namespace WindowsFormsPractice
 
         private void dbConnectSelectBtn_Click(object sender, EventArgs e)
         {
-            DBConnect dbConnect = new DBConnect();
+            DBConnection dbConnect = new DBConnection_MySQL();
             List<string> resultList = dbConnect.SelectTest();
 
             string finalResult = "";
@@ -373,8 +374,7 @@ namespace WindowsFormsPractice
 
         private void btnSheet6CreateArray_Click(object sender, EventArgs e)
         {
-            //generate array with repeat value
-            
+            //generate array with repeat value   
             // creates bool array of size 10 with default value "true"
             bool[] boolArray = Enumerable.Repeat(true, 10).ToArray();
             Console.WriteLine(boolArray[0]);
@@ -585,6 +585,12 @@ namespace WindowsFormsPractice
             //compare operator
             if (Box1 == Box2) Console.WriteLine("Box1 == Box2");
             else Console.WriteLine("Box1 != Box2");
+
+            string input = "1851 1999 1950 1905 2003";
+            string pattern = @"(?<=19)\d{2}\b";
+
+            foreach (Match match in Regex.Matches(input, pattern))
+                Console.WriteLine(match.Value);
         }
     }
 }
