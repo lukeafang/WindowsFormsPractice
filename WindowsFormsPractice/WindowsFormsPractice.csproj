@@ -50,6 +50,7 @@
     <Compile Include="Box.cs" />
     <Compile Include="CalculatorEngine.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="DBConnection_Azure_MsSQL.cs" />
     <Compile Include="DBConnection_MySQL.cs" />
     <Compile Include="DelCallbackTest.cs" />
     <Compile Include="DemoIndexer.cs" />

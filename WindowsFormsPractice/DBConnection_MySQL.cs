@@ -44,6 +44,16 @@ namespace WindowsFormsPractice
             this.errorMsg = "";
         }
 
+        public string getErrorString()
+        {
+            return this.errorMsg;
+        }
+
+        public bool IsSuccess()
+        {
+            return !bError;
+        }
+
         //open connection to database
         public bool Connect()
         {
@@ -95,16 +105,6 @@ namespace WindowsFormsPractice
                 errorMsg = ex.Message;
                 return false;
             }
-        }
-
-        public string getErrorString()
-        {
-            return this.errorMsg;
-        }
-
-        public bool IsSuccess()
-        {
-            return !bError;
         }
 
         public void executeQuery(string query)

@@ -30,6 +30,12 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnOperatorTest = new System.Windows.Forms.Button();
+            this.btnSheet8ParamTest = new System.Windows.Forms.Button();
+            this.btnSheet8RefTest = new System.Windows.Forms.Button();
+            this.btnSheet8OutTest = new System.Windows.Forms.Button();
+            this.btnSheet8SingletonTest = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtSheet7Password = new System.Windows.Forms.TextBox();
             this.lblSheet7Password = new System.Windows.Forms.Label();
@@ -79,14 +85,12 @@
             this.dbConnectCreateTableBtn = new System.Windows.Forms.Button();
             this.dbConnectSelectBtn = new System.Windows.Forms.Button();
             this.dbConnectBtn = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.btnSheet8SingletonTest = new System.Windows.Forms.Button();
-            this.btnSheet8OutTest = new System.Windows.Forms.Button();
-            this.btnSheet8RefTest = new System.Windows.Forms.Button();
-            this.btnSheet8ParamTest = new System.Windows.Forms.Button();
-            this.btnOperatorTest = new System.Windows.Forms.Button();
+            this.radioButtonDatabaseAzure = new System.Windows.Forms.RadioButton();
+            this.radioButtonDatabaseMySql = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -97,7 +101,6 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -127,6 +130,70 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Basic Controller";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.btnOperatorTest);
+            this.groupBox9.Controls.Add(this.btnSheet8ParamTest);
+            this.groupBox9.Controls.Add(this.btnSheet8RefTest);
+            this.groupBox9.Controls.Add(this.btnSheet8OutTest);
+            this.groupBox9.Controls.Add(this.btnSheet8SingletonTest);
+            this.groupBox9.Location = new System.Drawing.Point(667, 0);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(100, 234);
+            this.groupBox9.TabIndex = 7;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Sheet8";
+            // 
+            // btnOperatorTest
+            // 
+            this.btnOperatorTest.Location = new System.Drawing.Point(6, 135);
+            this.btnOperatorTest.Name = "btnOperatorTest";
+            this.btnOperatorTest.Size = new System.Drawing.Size(88, 23);
+            this.btnOperatorTest.TabIndex = 4;
+            this.btnOperatorTest.Text = "operator test";
+            this.btnOperatorTest.UseVisualStyleBackColor = true;
+            this.btnOperatorTest.Click += new System.EventHandler(this.btnOperatorTest_Click);
+            // 
+            // btnSheet8ParamTest
+            // 
+            this.btnSheet8ParamTest.Location = new System.Drawing.Point(6, 106);
+            this.btnSheet8ParamTest.Name = "btnSheet8ParamTest";
+            this.btnSheet8ParamTest.Size = new System.Drawing.Size(88, 23);
+            this.btnSheet8ParamTest.TabIndex = 3;
+            this.btnSheet8ParamTest.Text = "params Test";
+            this.btnSheet8ParamTest.UseVisualStyleBackColor = true;
+            this.btnSheet8ParamTest.Click += new System.EventHandler(this.btnSheet8ParamTest_Click);
+            // 
+            // btnSheet8RefTest
+            // 
+            this.btnSheet8RefTest.Location = new System.Drawing.Point(6, 79);
+            this.btnSheet8RefTest.Name = "btnSheet8RefTest";
+            this.btnSheet8RefTest.Size = new System.Drawing.Size(88, 23);
+            this.btnSheet8RefTest.TabIndex = 2;
+            this.btnSheet8RefTest.Text = "Ref Test";
+            this.btnSheet8RefTest.UseVisualStyleBackColor = true;
+            this.btnSheet8RefTest.Click += new System.EventHandler(this.btnSheet8RefTest_Click);
+            // 
+            // btnSheet8OutTest
+            // 
+            this.btnSheet8OutTest.Location = new System.Drawing.Point(6, 50);
+            this.btnSheet8OutTest.Name = "btnSheet8OutTest";
+            this.btnSheet8OutTest.Size = new System.Drawing.Size(88, 23);
+            this.btnSheet8OutTest.TabIndex = 1;
+            this.btnSheet8OutTest.Text = "Out Test";
+            this.btnSheet8OutTest.UseVisualStyleBackColor = true;
+            this.btnSheet8OutTest.Click += new System.EventHandler(this.btnSheet8OutTest_Click);
+            // 
+            // btnSheet8SingletonTest
+            // 
+            this.btnSheet8SingletonTest.Location = new System.Drawing.Point(6, 21);
+            this.btnSheet8SingletonTest.Name = "btnSheet8SingletonTest";
+            this.btnSheet8SingletonTest.Size = new System.Drawing.Size(88, 23);
+            this.btnSheet8SingletonTest.TabIndex = 0;
+            this.btnSheet8SingletonTest.Text = "Singleton Test";
+            this.btnSheet8SingletonTest.UseVisualStyleBackColor = true;
+            this.btnSheet8SingletonTest.Click += new System.EventHandler(this.btnSheet8SingletonTest_Click);
             // 
             // groupBox8
             // 
@@ -575,21 +642,24 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.radioButtonDatabaseAzure);
+            this.groupBox4.Controls.Add(this.radioButtonDatabaseMySql);
             this.groupBox4.Controls.Add(this.dbConnectInsertBtn);
+            this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.dbConnectDropTableBtn);
             this.groupBox4.Controls.Add(this.dbConnectCreateTableBtn);
             this.groupBox4.Controls.Add(this.dbConnectSelectBtn);
             this.groupBox4.Controls.Add(this.dbConnectBtn);
             this.groupBox4.Location = new System.Drawing.Point(7, 7);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(495, 69);
+            this.groupBox4.Size = new System.Drawing.Size(495, 96);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Connection Test";
             // 
             // dbConnectInsertBtn
             // 
-            this.dbConnectInsertBtn.Location = new System.Drawing.Point(294, 20);
+            this.dbConnectInsertBtn.Location = new System.Drawing.Point(296, 52);
             this.dbConnectInsertBtn.Name = "dbConnectInsertBtn";
             this.dbConnectInsertBtn.Size = new System.Drawing.Size(88, 28);
             this.dbConnectInsertBtn.TabIndex = 4;
@@ -599,7 +669,7 @@
             // 
             // dbConnectDropTableBtn
             // 
-            this.dbConnectDropTableBtn.Location = new System.Drawing.Point(198, 21);
+            this.dbConnectDropTableBtn.Location = new System.Drawing.Point(200, 53);
             this.dbConnectDropTableBtn.Name = "dbConnectDropTableBtn";
             this.dbConnectDropTableBtn.Size = new System.Drawing.Size(88, 28);
             this.dbConnectDropTableBtn.TabIndex = 3;
@@ -609,7 +679,7 @@
             // 
             // dbConnectCreateTableBtn
             // 
-            this.dbConnectCreateTableBtn.Location = new System.Drawing.Point(102, 21);
+            this.dbConnectCreateTableBtn.Location = new System.Drawing.Point(104, 53);
             this.dbConnectCreateTableBtn.Name = "dbConnectCreateTableBtn";
             this.dbConnectCreateTableBtn.Size = new System.Drawing.Size(88, 28);
             this.dbConnectCreateTableBtn.TabIndex = 2;
@@ -619,7 +689,7 @@
             // 
             // dbConnectSelectBtn
             // 
-            this.dbConnectSelectBtn.Location = new System.Drawing.Point(390, 21);
+            this.dbConnectSelectBtn.Location = new System.Drawing.Point(392, 53);
             this.dbConnectSelectBtn.Name = "dbConnectSelectBtn";
             this.dbConnectSelectBtn.Size = new System.Drawing.Size(88, 28);
             this.dbConnectSelectBtn.TabIndex = 1;
@@ -629,7 +699,7 @@
             // 
             // dbConnectBtn
             // 
-            this.dbConnectBtn.Location = new System.Drawing.Point(6, 21);
+            this.dbConnectBtn.Location = new System.Drawing.Point(8, 53);
             this.dbConnectBtn.Name = "dbConnectBtn";
             this.dbConnectBtn.Size = new System.Drawing.Size(88, 28);
             this.dbConnectBtn.TabIndex = 0;
@@ -637,69 +707,36 @@
             this.dbConnectBtn.UseVisualStyleBackColor = true;
             this.dbConnectBtn.Click += new System.EventHandler(this.dbConnectBtn_Click);
             // 
-            // groupBox9
+            // radioButtonDatabaseAzure
             // 
-            this.groupBox9.Controls.Add(this.btnOperatorTest);
-            this.groupBox9.Controls.Add(this.btnSheet8ParamTest);
-            this.groupBox9.Controls.Add(this.btnSheet8RefTest);
-            this.groupBox9.Controls.Add(this.btnSheet8OutTest);
-            this.groupBox9.Controls.Add(this.btnSheet8SingletonTest);
-            this.groupBox9.Location = new System.Drawing.Point(667, 0);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(100, 234);
-            this.groupBox9.TabIndex = 7;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Sheet8";
+            this.radioButtonDatabaseAzure.AutoSize = true;
+            this.radioButtonDatabaseAzure.Location = new System.Drawing.Point(123, 18);
+            this.radioButtonDatabaseAzure.Name = "radioButtonDatabaseAzure";
+            this.radioButtonDatabaseAzure.Size = new System.Drawing.Size(51, 16);
+            this.radioButtonDatabaseAzure.TabIndex = 7;
+            this.radioButtonDatabaseAzure.TabStop = true;
+            this.radioButtonDatabaseAzure.Text = "Azure";
+            this.radioButtonDatabaseAzure.UseVisualStyleBackColor = true;
             // 
-            // btnSheet8SingletonTest
+            // radioButtonDatabaseMySql
             // 
-            this.btnSheet8SingletonTest.Location = new System.Drawing.Point(6, 21);
-            this.btnSheet8SingletonTest.Name = "btnSheet8SingletonTest";
-            this.btnSheet8SingletonTest.Size = new System.Drawing.Size(88, 23);
-            this.btnSheet8SingletonTest.TabIndex = 0;
-            this.btnSheet8SingletonTest.Text = "Singleton Test";
-            this.btnSheet8SingletonTest.UseVisualStyleBackColor = true;
-            this.btnSheet8SingletonTest.Click += new System.EventHandler(this.btnSheet8SingletonTest_Click);
+            this.radioButtonDatabaseMySql.AutoSize = true;
+            this.radioButtonDatabaseMySql.Location = new System.Drawing.Point(57, 18);
+            this.radioButtonDatabaseMySql.Name = "radioButtonDatabaseMySql";
+            this.radioButtonDatabaseMySql.Size = new System.Drawing.Size(60, 16);
+            this.radioButtonDatabaseMySql.TabIndex = 6;
+            this.radioButtonDatabaseMySql.TabStop = true;
+            this.radioButtonDatabaseMySql.Text = "MySQL";
+            this.radioButtonDatabaseMySql.UseVisualStyleBackColor = true;
             // 
-            // btnSheet8OutTest
+            // label1
             // 
-            this.btnSheet8OutTest.Location = new System.Drawing.Point(6, 50);
-            this.btnSheet8OutTest.Name = "btnSheet8OutTest";
-            this.btnSheet8OutTest.Size = new System.Drawing.Size(88, 23);
-            this.btnSheet8OutTest.TabIndex = 1;
-            this.btnSheet8OutTest.Text = "Out Test";
-            this.btnSheet8OutTest.UseVisualStyleBackColor = true;
-            this.btnSheet8OutTest.Click += new System.EventHandler(this.btnSheet8OutTest_Click);
-            // 
-            // btnSheet8RefTest
-            // 
-            this.btnSheet8RefTest.Location = new System.Drawing.Point(6, 79);
-            this.btnSheet8RefTest.Name = "btnSheet8RefTest";
-            this.btnSheet8RefTest.Size = new System.Drawing.Size(88, 23);
-            this.btnSheet8RefTest.TabIndex = 2;
-            this.btnSheet8RefTest.Text = "Ref Test";
-            this.btnSheet8RefTest.UseVisualStyleBackColor = true;
-            this.btnSheet8RefTest.Click += new System.EventHandler(this.btnSheet8RefTest_Click);
-            // 
-            // btnSheet8ParamTest
-            // 
-            this.btnSheet8ParamTest.Location = new System.Drawing.Point(6, 106);
-            this.btnSheet8ParamTest.Name = "btnSheet8ParamTest";
-            this.btnSheet8ParamTest.Size = new System.Drawing.Size(88, 23);
-            this.btnSheet8ParamTest.TabIndex = 3;
-            this.btnSheet8ParamTest.Text = "params Test";
-            this.btnSheet8ParamTest.UseVisualStyleBackColor = true;
-            this.btnSheet8ParamTest.Click += new System.EventHandler(this.btnSheet8ParamTest_Click);
-            // 
-            // btnOperatorTest
-            // 
-            this.btnOperatorTest.Location = new System.Drawing.Point(6, 135);
-            this.btnOperatorTest.Name = "btnOperatorTest";
-            this.btnOperatorTest.Size = new System.Drawing.Size(88, 23);
-            this.btnOperatorTest.TabIndex = 4;
-            this.btnOperatorTest.Text = "operator test";
-            this.btnOperatorTest.UseVisualStyleBackColor = true;
-            this.btnOperatorTest.Click += new System.EventHandler(this.btnOperatorTest_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Database:";
             // 
             // Form1
             // 
@@ -711,6 +748,7 @@
             this.Text = "Practice";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -724,7 +762,7 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -788,6 +826,9 @@
         private System.Windows.Forms.Button btnSheet8RefTest;
         private System.Windows.Forms.Button btnSheet8ParamTest;
         private System.Windows.Forms.Button btnOperatorTest;
+        private System.Windows.Forms.RadioButton radioButtonDatabaseAzure;
+        private System.Windows.Forms.RadioButton radioButtonDatabaseMySql;
+        private System.Windows.Forms.Label label1;
     }
 }
 

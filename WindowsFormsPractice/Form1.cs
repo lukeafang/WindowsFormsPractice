@@ -41,6 +41,9 @@ namespace WindowsFormsPractice
             chkSheet1CPlus.Checked = true;
             chkSheet1CSharp.Checked = true;
             dateTimePickerSheet1.Value = DateTime.Today;
+
+            //tab2
+            radioButtonDatabaseMySql.Checked = true;
         }
 
         private void btnSheet1Submit_Click(object sender, EventArgs e)
@@ -93,8 +96,15 @@ namespace WindowsFormsPractice
 
         private void dbConnectBtn_Click(object sender, EventArgs e)
         {
-            DBConnection dbConnect = new DBConnection_MySQL();
-
+            DBConnection dbConnect;
+            if (radioButtonDatabaseMySql.Checked)
+            {
+                dbConnect = new DBConnection_MySQL();
+            } else
+            {
+                dbConnect = new DBConnection_Azure_MsSQL();
+            }
+            
             //test connection
             if (dbConnect.Connect())
             {
@@ -118,10 +128,22 @@ namespace WindowsFormsPractice
         private void dbConnectCreateTableBtn_Click(object sender, EventArgs e)
         {
             //test create table "menu"
-            DBConnection dbConnect = new DBConnection_MySQL();
+            DBConnection dbConnect;
             string queryString = "";
+            if (radioButtonDatabaseMySql.Checked)
+            {
+                dbConnect = new DBConnection_MySQL();
+                queryString = $"create table menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
+            }
+            else
+            {
+                dbConnect = new DBConnection_Azure_MsSQL();
+                queryString = $"create table menu (id INT IDENTITY(1,1) PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
+            }
+
+            
             //queryString = $"create table if not exists menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
-            queryString = $"create table menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
+            
             dbConnect.executeQuery(queryString);
             if (dbConnect.IsSuccess())
             {
@@ -136,7 +158,17 @@ namespace WindowsFormsPractice
         private void dbConnectDropTableBtn_Click(object sender, EventArgs e)
         {
             //test drop table "menu"
-            DBConnection dbConnect = new DBConnection_MySQL();
+            DBConnection dbConnect;
+            if (radioButtonDatabaseMySql.Checked)
+            {
+                dbConnect = new DBConnection_MySQL();
+            }
+            else
+            {
+                dbConnect = new DBConnection_Azure_MsSQL();
+            }
+
+
             string queryString = "";
             //queryString = $"drop table if exists menu;";
             queryString = $"drop table menu;";
@@ -154,10 +186,24 @@ namespace WindowsFormsPractice
         private void dbConnectInsertBtn_Click(object sender, EventArgs e)
         {
             //test insert data into table "menu"
-            DBConnection dbConnect = new DBConnection_MySQL();
-            string queryString = "";
-            queryString = $"INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', NOW());";
-            dbConnect.executeQuery(queryString);
+            DBConnection dbConnect;
+            string queryString1 = "";
+            string queryString2 = "";
+            if (radioButtonDatabaseMySql.Checked)
+            {
+                dbConnect = new DBConnection_MySQL();
+                queryString1 = $"INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', NOW());";
+                queryString2 = $"INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', NOW());";
+            }
+            else
+            {
+                dbConnect = new DBConnection_Azure_MsSQL();
+                queryString1 = $"INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', GETDATE());";
+                queryString2 = $"INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', GETDATE());";
+            }
+            
+                      
+            dbConnect.executeQuery(queryString1);
             if (dbConnect.IsSuccess())
             {
                 MessageBox.Show("Inserted first record");
@@ -167,9 +213,8 @@ namespace WindowsFormsPractice
                 MessageBox.Show(dbConnect.getErrorString());
                 return;
             }
-
-            queryString = $"INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', NOW());";
-            dbConnect.executeQuery(queryString);
+            
+            dbConnect.executeQuery(queryString2);
             if (dbConnect.IsSuccess())
             {
                 MessageBox.Show("Inserted second record");
@@ -184,7 +229,17 @@ namespace WindowsFormsPractice
 
         private void dbConnectSelectBtn_Click(object sender, EventArgs e)
         {
-            DBConnection dbConnect = new DBConnection_MySQL();
+            DBConnection dbConnect;
+            if (radioButtonDatabaseMySql.Checked)
+            {
+                dbConnect = new DBConnection_MySQL();
+            }
+            else
+            {
+                dbConnect = new DBConnection_Azure_MsSQL();
+            }
+
+
             List<string> resultList = dbConnect.SelectTest();
 
             string finalResult = "";
