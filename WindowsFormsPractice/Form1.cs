@@ -13,6 +13,9 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
+
 namespace WindowsFormsPractice
 {
     public partial class Form1 : Form
@@ -100,11 +103,12 @@ namespace WindowsFormsPractice
             if (radioButtonDatabaseMySql.Checked)
             {
                 dbConnect = new DBConnection_MySQL();
-            } else
+            }
+            else
             {
                 dbConnect = new DBConnection_Azure_MsSQL();
             }
-            
+
             //test connection
             if (dbConnect.Connect())
             {
@@ -141,9 +145,9 @@ namespace WindowsFormsPractice
                 queryString = $"create table menu (id INT IDENTITY(1,1) PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
             }
 
-            
+
             //queryString = $"create table if not exists menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
-            
+
             dbConnect.executeQuery(queryString);
             if (dbConnect.IsSuccess())
             {
@@ -201,8 +205,8 @@ namespace WindowsFormsPractice
                 queryString1 = $"INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', GETDATE());";
                 queryString2 = $"INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', GETDATE());";
             }
-            
-                      
+
+
             dbConnect.executeQuery(queryString1);
             if (dbConnect.IsSuccess())
             {
@@ -213,7 +217,7 @@ namespace WindowsFormsPractice
                 MessageBox.Show(dbConnect.getErrorString());
                 return;
             }
-            
+
             dbConnect.executeQuery(queryString2);
             if (dbConnect.IsSuccess())
             {
@@ -293,7 +297,7 @@ namespace WindowsFormsPractice
                 string filePath = saveFileDialog1.FileName.ToString();
                 if (File.Exists(filePath))
                 {
-                   // MessageBox.Show("File exist. Overwrite it.");
+                    // MessageBox.Show("File exist. Overwrite it.");
                 }
                 string context = textBoxSheet4LoadFile.Text;
                 MessageBox.Show(context);
@@ -322,7 +326,7 @@ namespace WindowsFormsPractice
                         while ((s = sr.ReadLine()) != null)
                         {
                             lineList.Add(s);
-                            textBoxSheet4LoadFile.AppendText(s+"\n");
+                            textBoxSheet4LoadFile.AppendText(s + "\n");
                         }
 
                         int nLines = lineList.Count;
@@ -355,7 +359,7 @@ namespace WindowsFormsPractice
                     string[] lines = context.Split('\n');
                     foreach (string line in lines)
                     {
-                        if(line.Length == 0) { continue; }
+                        if (line.Length == 0) { continue; }
                         sr.WriteLine(line);
                     }
                     sr.Close();
@@ -408,7 +412,7 @@ namespace WindowsFormsPractice
             //define a nullable value
             //Nullable<int> someNullValue = null;
             int? someNullValue = null;
-            
+
             //check value is null or not
             if (someNullValue.HasValue)
             {
@@ -424,7 +428,7 @@ namespace WindowsFormsPractice
             int someIntValue = someNullValue ?? 666;
             MessageBox.Show("Assigned value is: " + someIntValue);
 
-            
+
         }
 
         private void btnSheet6CreateArray_Click(object sender, EventArgs e)
@@ -469,14 +473,14 @@ namespace WindowsFormsPractice
             o[2] = "Hello";
             o[3] = 555;
 
-            for(int i=0;i<o.Length;i++)
+            for (int i = 0; i < o.Length; i++)
             {
                 //using as operator
                 Person p1 = o[i] as Person;
                 Console.WriteLine("{0}", i);
 
                 //as operator success
-                if(p1 != null)
+                if (p1 != null)
                 {
                     Console.WriteLine("It's a person.");
                 }
@@ -535,7 +539,7 @@ namespace WindowsFormsPractice
             Console.WriteLine("Custom Show 2 : {0}", value);
         }
 
-        
+
 
         private void btnSheet7OpenWindow_Click(object sender, EventArgs e)
         {
@@ -559,7 +563,7 @@ namespace WindowsFormsPractice
         private void btnSheet6Indexer_Click(object sender, EventArgs e)
         {
             DemoIndexer d = new DemoIndexer();
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 d[i] = $"Name_{i}";
             }
@@ -617,11 +621,11 @@ namespace WindowsFormsPractice
             Box Box3 = new Box();
 
             double volume = 0.0;
-            
+
             Box1.setLength(6.0);
             Box1.setBreadth(7.0);
             Box1.setHeight(5.0);
-            
+
             //Box2.setLength(12.0);
             //Box2.setBreadth(13.0);
             //Box2.setHeight(10.0);
@@ -646,6 +650,174 @@ namespace WindowsFormsPractice
 
             foreach (Match match in Regex.Matches(input, pattern))
                 Console.WriteLine(match.Value);
+        }
+
+        private void getRowDataFromExcel(int rowIndex, Excel.Range range, out string name, out string type, out string price, out string date)
+        {
+            name = "";
+            type = "";
+            price = "";
+            date = "";
+
+            int index = 1;
+            if (range.Cells[rowIndex, index] != null)
+            {
+                name = Convert.ToString(range.Cells[rowIndex, index++].Value2);
+            }
+            if (range.Cells[rowIndex, index] != null)
+            {
+                type = Convert.ToString(range.Cells[rowIndex, index++].Value2);
+            }
+            if (range.Cells[rowIndex, index] != null)
+            {
+                price = Convert.ToString(range.Cells[rowIndex, index++].Value2);
+            }
+            if (range.Cells[rowIndex, index] != null)
+            {
+                date = Convert.ToString(range.Cells[rowIndex, index++].Value2);
+            }
+
+        }
+
+        private void btnExcelLoad_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog theDialog = new OpenFileDialog();
+            theDialog.Title = "Load Excel File";
+            theDialog.Filter = "xlsx files|*.xlsx";
+            //theDialog.InitialDirectory = @"C:\";
+            if (theDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = theDialog.FileName.ToString();
+
+
+                Excel.Application xlApp;
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                Excel.Range range;
+
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Open(filePath, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);//get first sheet
+
+                range = xlWorkSheet.UsedRange;
+
+                int n_row = range.Rows.Count;
+                int n_col = range.Columns.Count;
+
+                DataTable dt = (DataTable)dataGridViewExcelSheet.DataSource;
+                string name, type, price, date;
+                for (int i = 2; i <= n_row; i++)
+                {
+                    getRowDataFromExcel(i, range, out name, out type, out price, out date);
+                    //string outputString = $"name:{name}, type:{type}, price:{price}, date:{date}";
+                    //MessageBox.Show(outputString);
+                    dt.Rows.Add(name, type, price, date);
+                   
+                }
+
+                xlWorkBook.Close(true, null, null);
+                xlApp.Quit();
+
+                Marshal.ReleaseComObject(xlWorkSheet);
+                Marshal.ReleaseComObject(xlWorkBook);
+                Marshal.ReleaseComObject(xlApp);
+            }
+        }
+
+        private void tabPage2_Enter(object sender, EventArgs e)
+        {
+            Console.WriteLine("Enter");
+
+            //dataGridViewExcelSheet.Columns.Clear();
+            //dataGridViewExcelSheet.Refresh();
+
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.AddRange(new DataColumn[4] { new DataColumn("name", typeof(string)), new DataColumn("type", typeof(string)), new DataColumn("price", typeof(string)), new DataColumn("ModifiedDate", typeof(string)) });
+            dataGridViewExcelSheet.DataSource = dataTable;
+         
+        }
+
+        private void btnExcelSave_Click(object sender, EventArgs e)
+        {
+            //save file
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Load Excel File";
+            saveFileDialog1.Filter = "xlsx files|*.xlsx";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog1.FileName.ToString();
+
+                //get data from datagrid
+                DataTable dt = (DataTable)dataGridViewExcelSheet.DataSource;
+
+                int nRow = dt.Rows.Count;
+                int nCol = dt.Columns.Count;
+
+                //get column names
+                string[] columnNameList = new string[nCol];
+                for(int i = 0; i < nCol; i++)
+                {
+                    columnNameList[i] = dataGridViewExcelSheet.Columns[i].Name;
+                }
+
+                //get data from each row
+                for(int i = 0; i < nRow; i++)
+                {
+                    string value = dataGridViewExcelSheet.Rows[i].Cells[0].Value.ToString();
+
+                }
+
+                //create new excel file
+
+                Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+                if (xlApp == null)
+                {
+                    MessageBox.Show("Excel is not properly installed!!");
+                    return;
+                }
+                //disable display alert.
+                xlApp.DisplayAlerts = false;
+
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                //write columnd
+                int rowIndex = 1;
+                int colIndex = 1;
+                for(int j=0; j< nCol; j++)
+                {
+                    colIndex = j + 1;
+                    xlWorkSheet.Cells[1, colIndex] = dataGridViewExcelSheet.Columns[j].Name;
+                }
+
+                //write each row
+                for(int i = 0; i < nRow; i++)
+                {
+                    rowIndex = i + 2;//skip column name
+                    for (int j = 0; j < nCol; j++)
+                    {
+                        colIndex = j + 1;
+                        string value = dataGridViewExcelSheet.Rows[i].Cells[j].Value.ToString();
+                        xlWorkSheet.Cells[rowIndex, colIndex] = value;
+                    }
+                    
+                }
+
+                xlWorkBook.SaveAs(filePath, misValue, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlNoChange, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                xlApp.Quit();
+
+                Marshal.ReleaseComObject(xlWorkSheet);
+                Marshal.ReleaseComObject(xlWorkBook);
+                Marshal.ReleaseComObject(xlApp);
+
+                MessageBox.Show("Excel file saved");
+            }
         }
     }
 }

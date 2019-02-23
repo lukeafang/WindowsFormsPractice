@@ -79,15 +79,19 @@
             this.txtSheet1Name = new System.Windows.Forms.TextBox();
             this.lblSheet1Name = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btnExcelLoad = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButtonDatabaseAzure = new System.Windows.Forms.RadioButton();
+            this.radioButtonDatabaseMySql = new System.Windows.Forms.RadioButton();
             this.dbConnectInsertBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.dbConnectDropTableBtn = new System.Windows.Forms.Button();
             this.dbConnectCreateTableBtn = new System.Windows.Forms.Button();
             this.dbConnectSelectBtn = new System.Windows.Forms.Button();
             this.dbConnectBtn = new System.Windows.Forms.Button();
-            this.radioButtonDatabaseAzure = new System.Windows.Forms.RadioButton();
-            this.radioButtonDatabaseMySql = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridViewExcelSheet = new System.Windows.Forms.DataGridView();
+            this.btnExcelSave = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -100,7 +104,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSheet2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExcelSheet)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -631,6 +637,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox10);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -639,6 +646,29 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Database Connection";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.btnExcelSave);
+            this.groupBox10.Controls.Add(this.dataGridViewExcelSheet);
+            this.groupBox10.Controls.Add(this.btnExcelLoad);
+            this.groupBox10.Location = new System.Drawing.Point(7, 109);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(495, 308);
+            this.groupBox10.TabIndex = 1;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Excel File";
+            // 
+            // btnExcelLoad
+            // 
+            this.btnExcelLoad.Location = new System.Drawing.Point(6, 18);
+            this.btnExcelLoad.Name = "btnExcelLoad";
+            this.btnExcelLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnExcelLoad.TabIndex = 0;
+            this.btnExcelLoad.Text = "Load";
+            this.btnExcelLoad.UseVisualStyleBackColor = true;
+            this.btnExcelLoad.Click += new System.EventHandler(this.btnExcelLoad_Click);
             // 
             // groupBox4
             // 
@@ -657,6 +687,28 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Connection Test";
             // 
+            // radioButtonDatabaseAzure
+            // 
+            this.radioButtonDatabaseAzure.AutoSize = true;
+            this.radioButtonDatabaseAzure.Location = new System.Drawing.Point(123, 18);
+            this.radioButtonDatabaseAzure.Name = "radioButtonDatabaseAzure";
+            this.radioButtonDatabaseAzure.Size = new System.Drawing.Size(51, 16);
+            this.radioButtonDatabaseAzure.TabIndex = 7;
+            this.radioButtonDatabaseAzure.TabStop = true;
+            this.radioButtonDatabaseAzure.Text = "Azure";
+            this.radioButtonDatabaseAzure.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDatabaseMySql
+            // 
+            this.radioButtonDatabaseMySql.AutoSize = true;
+            this.radioButtonDatabaseMySql.Location = new System.Drawing.Point(57, 18);
+            this.radioButtonDatabaseMySql.Name = "radioButtonDatabaseMySql";
+            this.radioButtonDatabaseMySql.Size = new System.Drawing.Size(60, 16);
+            this.radioButtonDatabaseMySql.TabIndex = 6;
+            this.radioButtonDatabaseMySql.TabStop = true;
+            this.radioButtonDatabaseMySql.Text = "MySQL";
+            this.radioButtonDatabaseMySql.UseVisualStyleBackColor = true;
+            // 
             // dbConnectInsertBtn
             // 
             this.dbConnectInsertBtn.Location = new System.Drawing.Point(296, 52);
@@ -666,6 +718,15 @@
             this.dbConnectInsertBtn.Text = "Insert One";
             this.dbConnectInsertBtn.UseVisualStyleBackColor = true;
             this.dbConnectInsertBtn.Click += new System.EventHandler(this.dbConnectInsertBtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Database:";
             // 
             // dbConnectDropTableBtn
             // 
@@ -707,36 +768,24 @@
             this.dbConnectBtn.UseVisualStyleBackColor = true;
             this.dbConnectBtn.Click += new System.EventHandler(this.dbConnectBtn_Click);
             // 
-            // radioButtonDatabaseAzure
+            // dataGridViewExcelSheet
             // 
-            this.radioButtonDatabaseAzure.AutoSize = true;
-            this.radioButtonDatabaseAzure.Location = new System.Drawing.Point(123, 18);
-            this.radioButtonDatabaseAzure.Name = "radioButtonDatabaseAzure";
-            this.radioButtonDatabaseAzure.Size = new System.Drawing.Size(51, 16);
-            this.radioButtonDatabaseAzure.TabIndex = 7;
-            this.radioButtonDatabaseAzure.TabStop = true;
-            this.radioButtonDatabaseAzure.Text = "Azure";
-            this.radioButtonDatabaseAzure.UseVisualStyleBackColor = true;
+            this.dataGridViewExcelSheet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewExcelSheet.Location = new System.Drawing.Point(8, 47);
+            this.dataGridViewExcelSheet.Name = "dataGridViewExcelSheet";
+            this.dataGridViewExcelSheet.RowTemplate.Height = 24;
+            this.dataGridViewExcelSheet.Size = new System.Drawing.Size(472, 196);
+            this.dataGridViewExcelSheet.TabIndex = 1;
             // 
-            // radioButtonDatabaseMySql
+            // btnExcelSave
             // 
-            this.radioButtonDatabaseMySql.AutoSize = true;
-            this.radioButtonDatabaseMySql.Location = new System.Drawing.Point(57, 18);
-            this.radioButtonDatabaseMySql.Name = "radioButtonDatabaseMySql";
-            this.radioButtonDatabaseMySql.Size = new System.Drawing.Size(60, 16);
-            this.radioButtonDatabaseMySql.TabIndex = 6;
-            this.radioButtonDatabaseMySql.TabStop = true;
-            this.radioButtonDatabaseMySql.Text = "MySQL";
-            this.radioButtonDatabaseMySql.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 12);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Database:";
+            this.btnExcelSave.Location = new System.Drawing.Point(88, 18);
+            this.btnExcelSave.Name = "btnExcelSave";
+            this.btnExcelSave.Size = new System.Drawing.Size(75, 23);
+            this.btnExcelSave.TabIndex = 2;
+            this.btnExcelSave.Text = "Save";
+            this.btnExcelSave.UseVisualStyleBackColor = true;
+            this.btnExcelSave.Click += new System.EventHandler(this.btnExcelSave_Click);
             // 
             // Form1
             // 
@@ -761,8 +810,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExcelSheet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -829,6 +880,10 @@
         private System.Windows.Forms.RadioButton radioButtonDatabaseAzure;
         private System.Windows.Forms.RadioButton radioButtonDatabaseMySql;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Button btnExcelLoad;
+        private System.Windows.Forms.DataGridView dataGridViewExcelSheet;
+        private System.Windows.Forms.Button btnExcelSave;
     }
 }
 
