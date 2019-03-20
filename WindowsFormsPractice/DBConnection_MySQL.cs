@@ -158,7 +158,7 @@ namespace WindowsFormsPractice
                     while (dataReader.Read())
                     {
                         string tempStr = "";
-                        tempStr = $"id: {dataReader["id"]}, name: {dataReader["name"]}, type: {dataReader["type"]}, price: {dataReader["price"]}, Date: {dataReader["modifiedDate"]}.\n";
+                        tempStr = String.Format("id: {0}, name: {1}, type: {2}, price: {3}, Date: {4}.\n", dataReader["id"], dataReader["name"], dataReader["type"], dataReader["price"], dataReader["modifiedDate"]);
                         results.Add(tempStr);
                     }
 

@@ -72,7 +72,7 @@ namespace WindowsFormsPractice
             submitDate = dateTimePickerSheet1.Value.ToString();
 
             string message = "";
-            message = $" name:{name}\n ageRange:{ageRange}\n gender:{gender}\n skills:{skills}\n date:{submitDate}\n";
+            message = String.Format(" name:{0}\n ageRange:{1}\n gender:{2}\n skills:{3}\n date:{4}\n",name,ageRange,gender,skills,submitDate);
             MessageBox.Show(message);
 
         }
@@ -137,12 +137,12 @@ namespace WindowsFormsPractice
             if (radioButtonDatabaseMySql.Checked)
             {
                 dbConnect = new DBConnection_MySQL();
-                queryString = $"create table menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
+                queryString = String.Format("create table menu (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);");
             }
             else
             {
                 dbConnect = new DBConnection_Azure_MsSQL();
-                queryString = $"create table menu (id INT IDENTITY(1,1) PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);";
+                queryString = String.Format("create table menu (id INT IDENTITY(1,1) PRIMARY KEY, name VARCHAR(30), type VARCHAR(20), price VARCHAR(10), modifiedDate datetime);");
             }
 
 
@@ -175,7 +175,7 @@ namespace WindowsFormsPractice
 
             string queryString = "";
             //queryString = $"drop table if exists menu;";
-            queryString = $"drop table menu;";
+            queryString = "drop table menu;";
             dbConnect.executeQuery(queryString);
             if (dbConnect.IsSuccess())
             {
@@ -196,14 +196,14 @@ namespace WindowsFormsPractice
             if (radioButtonDatabaseMySql.Checked)
             {
                 dbConnect = new DBConnection_MySQL();
-                queryString1 = $"INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', NOW());";
-                queryString2 = $"INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', NOW());";
+                queryString1 = "INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', NOW());";
+                queryString2 = "INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', NOW());";
             }
             else
             {
                 dbConnect = new DBConnection_Azure_MsSQL();
-                queryString1 = $"INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', GETDATE());";
-                queryString2 = $"INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', GETDATE());";
+                queryString1 = "INSERT INTO menu (name, type, price, modifiedDate) VALUES('Beef Noodle', 'Noodle', '8.99', GETDATE());";
+                queryString2 = "INSERT INTO menu(name, type, price, modifiedDate) VALUES('Fired Chicken Rice', 'Rice', '7.99', GETDATE());";
             }
 
 
@@ -330,7 +330,7 @@ namespace WindowsFormsPractice
                         }
 
                         int nLines = lineList.Count;
-                        MessageBox.Show($"{nLines} line read.");
+                        MessageBox.Show(String.Format("{0} line read.",nLines));
                     }
                 }
                 else
@@ -402,7 +402,7 @@ namespace WindowsFormsPractice
             User objnew = (User)formatter.Deserialize(stream);
 
             string finalStr = "";
-            finalStr = $"ID: {objnew.ID}, Name: {objnew.Name}.";
+            finalStr = String.Format("ID: {0}, Name: {1}.",objnew.ID, objnew.Name);
             MessageBox.Show(finalStr);
 
         }
@@ -565,7 +565,7 @@ namespace WindowsFormsPractice
             DemoIndexer d = new DemoIndexer();
             for (int i = 0; i < 10; i++)
             {
-                d[i] = $"Name_{i}";
+                d[i] = String.Format("Name_{0}", i);
             }
 
             Console.WriteLine(d[2]);
