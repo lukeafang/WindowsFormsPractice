@@ -215,3 +215,11 @@ FakesAssemblies/
 **/*.Server/GeneratedArtifacts
 **/*.Server/ModelManifest.xml
 _Pvt_Extensions
+
+WindowsFormsPractice/files/test1\.jpg
+
+WindowsFormsPractice/files/edited\.doc
+
+WindowsFormsPractice/files/original\.doc
+
+*.doc

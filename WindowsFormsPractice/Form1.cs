@@ -16,6 +16,11 @@ using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 
+using Word = Microsoft.Office.Interop.Word;
+using Microsoft.Office.Interop.Word;
+
+using System.Security.Cryptography;
+
 namespace WindowsFormsPractice
 {
     public partial class Form1 : Form
@@ -25,6 +30,9 @@ namespace WindowsFormsPractice
 
         public delegate void SendValueDelegate(string pValue);
         public event SendValueDelegate SendValueCallback;
+
+        Word.Application ap = null;
+        Document document = null;
 
         public Form1()
         {
@@ -45,8 +53,11 @@ namespace WindowsFormsPractice
             chkSheet1CSharp.Checked = true;
             dateTimePickerSheet1.Value = DateTime.Today;
 
+            txtEncryptPassword.Text = "UJYHCX783her*&5@$%#(MJCX**38n*#6835ncv56tvbry(&#MX98cn342cn4*&X#&";
+
             //tab2
             radioButtonDatabaseMySql.Checked = true;
+
         }
 
         private void btnSheet1Submit_Click(object sender, EventArgs e)
@@ -374,7 +385,7 @@ namespace WindowsFormsPractice
         private void btnSheet5SaveObject_Click(object sender, EventArgs e)
         {
             //get working path.
-            string workPath = Application.StartupPath;
+            string workPath = System.Windows.Forms.Application.StartupPath;
             string filePath = workPath + @"\test.obj";
 
             User obj = new User(666, "testUser");
@@ -394,7 +405,7 @@ namespace WindowsFormsPractice
         private void btnSheet5LoadObject_Click(object sender, EventArgs e)
         {
             //get working path.
-            string workPath = Application.StartupPath;
+            string workPath = System.Windows.Forms.Application.StartupPath;
             string filePath = workPath + @"\test.obj";
 
             IFormatter formatter = new BinaryFormatter();
@@ -704,7 +715,7 @@ namespace WindowsFormsPractice
                 int n_row = range.Rows.Count;
                 int n_col = range.Columns.Count;
 
-                DataTable dt = (DataTable)dataGridViewExcelSheet.DataSource;
+                System.Data.DataTable dt = (System.Data.DataTable)dataGridViewExcelSheet.DataSource;
                 string name, type, price, date;
                 for (int i = 2; i <= n_row; i++)
                 {
@@ -731,7 +742,7 @@ namespace WindowsFormsPractice
             //dataGridViewExcelSheet.Columns.Clear();
             //dataGridViewExcelSheet.Refresh();
 
-            DataTable dataTable = new DataTable();
+            System.Data.DataTable dataTable = new System.Data.DataTable();
             dataTable.Columns.AddRange(new DataColumn[4] { new DataColumn("name", typeof(string)), new DataColumn("type", typeof(string)), new DataColumn("price", typeof(string)), new DataColumn("ModifiedDate", typeof(string)) });
             dataGridViewExcelSheet.DataSource = dataTable;
          
@@ -748,7 +759,7 @@ namespace WindowsFormsPractice
                 string filePath = saveFileDialog1.FileName.ToString();
 
                 //get data from datagrid
-                DataTable dt = (DataTable)dataGridViewExcelSheet.DataSource;
+                System.Data.DataTable dt = (System.Data.DataTable)dataGridViewExcelSheet.DataSource;
 
                 int nRow = dt.Rows.Count;
                 int nCol = dt.Columns.Count;
@@ -819,5 +830,241 @@ namespace WindowsFormsPractice
                 MessageBox.Show("Excel file saved");
             }
         }
+
+        private void btnLINQ2Array_Click(object sender, EventArgs e)
+        {
+            // Data source
+            string[] names = { "Bill", "Steve", "James", "Mohan" };
+
+            // LINQ Query 
+            var myLinqQuery = from name in names
+                              where name.Contains('e')
+                              select name;
+
+            // Query execution
+            String outputStr = "";
+            foreach (var name in myLinqQuery)
+                outputStr += name + " ";
+            MessageBox.Show(outputStr);
+        }
+
+        private void btnLINQ2Object_Click(object sender, EventArgs e)
+        {
+            User[] userArray = { 
+                    new User() { ID = 1, Name = "John"} ,
+                    new User() { ID = 2, Name = "Ted"} ,
+                    new User() { ID = 3, Name = "Bob"} ,
+                };
+
+            // Use LINQ to find teenager students
+            User[] users = userArray.Where(user => user.ID == 1 && user.ID < 20).ToArray();
+
+
+            String outputStr = "";
+            foreach (var user in users)
+                outputStr += user.Name + ", ";
+            MessageBox.Show(outputStr);
+
+
+            // Use LINQ to find first user whose ID >= 2 
+            User user1 = userArray.Where(user => user.ID >= 2).FirstOrDefault();
+
+            outputStr = String.Format("first user whose ID >= 2 is {0}", user1.Name);
+            MessageBox.Show(outputStr);
+       
+        }
+
+        private void BtnLINQSyntax_Click(object sender, EventArgs e)
+        {
+            // string collection
+            IList<string> stringList = new List<string>() { 
+                "C# Tutorials",
+                "VB.NET Tutorials",
+                "Learn C++",
+                "MVC Tutorials" ,
+                "Java" 
+            };
+
+            // LINQ Query Syntax
+            string[] result = (from s in stringList
+                         where s.Contains("Tutorials")
+                         select s).ToArray();
+
+            String outputStr = "";
+            foreach (string a in result)
+                outputStr += a + ",";
+            MessageBox.Show(outputStr);
+
+        }
+
+
+        private void btnSheet9OpenWordFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog theDialog = new OpenFileDialog();
+            theDialog.Title = "Open word File";
+            theDialog.Filter = "DOC files|*.doc";
+            //theDialog.InitialDirectory = @"C:\";
+            if (theDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = theDialog.FileName.ToString();
+
+                ap = new Word.Application();
+                document = ap.Documents.Open(filePath);
+
+                ap.Visible = true;
+
+                object FullFileName = "D:\\fang\\testSave.doc";
+                object FileFormat = Type.Missing;
+                object LockComments = Type.Missing;
+                object Password = Type.Missing;
+                object AddToRecentFiles = Type.Missing;
+                object WritePassword = Type.Missing;
+                object ReadOnlyRecommended = Type.Missing;
+                object EmbedTrueTypeFonts = Type.Missing;
+                object SaveNativePictureFormat = Type.Missing;
+                object SaveFormsData = Type.Missing;
+                object SaveAsAOCELetter = Type.Missing;
+                object Encoding = Type.Missing;
+                object InsertLineBreaks = Type.Missing;
+                object AllowSubstitutions = Type.Missing;
+                object LineEnding = Type.Missing;
+                object AddBiDiMarks = Type.Missing;
+                object CompatibilityMode = Type.Missing;
+
+                document.SaveAs2(ref FullFileName,
+                        ref FileFormat,
+                        ref LockComments,
+                        ref Password,
+                        ref AddToRecentFiles,
+                        ref WritePassword,
+                        ref ReadOnlyRecommended,
+                        ref EmbedTrueTypeFonts,
+                        ref SaveNativePictureFormat,
+                        ref SaveFormsData,
+                        ref SaveAsAOCELetter,
+                        ref Encoding,
+                        ref InsertLineBreaks,
+                        ref AllowSubstitutions,
+                        ref LineEnding,
+                        ref AddBiDiMarks,
+                        ref CompatibilityMode);
+
+
+            }
+
+
+        }
+
+        private void btnSheet9CloseWordFile_Click(object sender, EventArgs e)
+        {
+            if (ap != null)
+            {
+                ap.Quit();
+            }
+        }
+
+        private void btnEncrypt_Click(object sender, EventArgs e)
+        {
+            //get key password
+            string keyPassword = txtEncryptPassword.Text;
+            string inputString = txtEncryptString.Text;
+            string resultString = EncryptString(inputString, keyPassword);
+
+            txtEncryptResult.Text = resultString;
+
+
+
+        }
+
+        protected static string EncryptString(string inputString, string password)
+        {
+            // "Password" string variable is nothing but the key(your secret key) value which is sent from the front end.
+            // "InputText" string variable is the actual password sent from the login page.
+            // We are now going to create an instance of the
+            // Rihndael class.
+            RijndaelManaged RijndaelCipher = new RijndaelManaged();
+            // First we need to turn the input strings into a byte array.
+            byte[] PlainText = System.Text.Encoding.Unicode.GetBytes(inputString);
+            // We are using Salt to make it harder to guess our key
+            // using a dictionary attack.
+            byte[] Salt = Encoding.ASCII.GetBytes(password.Length.ToString());
+            // The (Secret Key) will be generated from the specified
+            // password and Salt.
+            //PasswordDeriveBytes -- It Derives a key from a password
+            PasswordDeriveBytes SecretKey = new PasswordDeriveBytes(password, Salt);
+            // Create a encryptor from the existing SecretKey bytes.
+            // We use 32 bytes for the secret key
+            // (the default Rijndael key length is 256 bit = 32 bytes) and
+            // then 16 bytes for the IV (initialization vector),
+            // (the default Rijndael IV length is 128 bit = 16 bytes)
+            ICryptoTransform Encryptor = RijndaelCipher.CreateEncryptor(SecretKey.GetBytes(16), SecretKey.GetBytes(16));
+            // Create a MemoryStream that is going to hold the encrypted bytes
+            MemoryStream memoryStream = new MemoryStream();
+            // Create a CryptoStream through which we are going to be processing our data.
+            // CryptoStreamMode.Write means that we are going to be writing data
+            // to the stream and the output will be written in the MemoryStream
+            // we have provided. (always use write mode for encryption)
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, Encryptor, CryptoStreamMode.Write);
+            // Start the encryption process.
+            cryptoStream.Write(PlainText, 0, PlainText.Length);
+            // Finish encrypting.
+            cryptoStream.FlushFinalBlock();
+            // Convert our encrypted data from a memoryStream into a byte array.
+            byte[] CipherBytes = memoryStream.ToArray();
+            // Close both streams.
+            memoryStream.Close();
+            cryptoStream.Close();
+            // Convert encrypted data into a base64-encoded string.
+            // A common mistake would be to use an Encoding class for that.
+            // It does not work, because not all byte values can be
+            // represented by characters. We are going to be using Base64 encoding
+            // That is designed exactly for what we are trying to do.
+            string EncryptedData = Convert.ToBase64String(CipherBytes);
+            // Return encrypted string.
+            return EncryptedData;
+        }
+
+        protected static string DecryptString(string InputText, string Password)
+        {
+            try
+            {
+                RijndaelManaged RijndaelCipher = new RijndaelManaged();
+                byte[] EncryptedData = Convert.FromBase64String(InputText);
+                byte[] Salt = Encoding.ASCII.GetBytes(Password.Length.ToString());
+                PasswordDeriveBytes SecretKey = new PasswordDeriveBytes(Password, Salt);
+                // Create a decryptor from the existing SecretKey bytes.
+                ICryptoTransform Decryptor = RijndaelCipher.CreateDecryptor(SecretKey.GetBytes(16), SecretKey.GetBytes(16));
+                MemoryStream memoryStream = new MemoryStream(EncryptedData);
+                // Create a CryptoStream. (always use Read mode for decryption).
+                CryptoStream cryptoStream = new CryptoStream(memoryStream, Decryptor, CryptoStreamMode.Read);
+                // Since at this point we don't know what the size of decrypted data
+                // will be, allocate the buffer long enough to hold EncryptedData;
+                // DecryptedData is never longer than EncryptedData.
+                byte[] PlainText = new byte[EncryptedData.Length];
+                // Start decrypting.
+                int DecryptedCount = cryptoStream.Read(PlainText, 0, PlainText.Length);
+                memoryStream.Close();
+                cryptoStream.Close();
+                // Convert decrypted data into a string.
+                string DecryptedData = Encoding.Unicode.GetString(PlainText, 0, DecryptedCount);
+                // Return decrypted string.
+                return DecryptedData;
+            }
+            catch (Exception exception)
+            {
+                return (exception.Message);
+            }
+        }
+
+        private void btnDecrypt_Click(object sender, EventArgs e)
+        {
+            string passwordString = txtEncryptPassword.Text;
+            string EncryptedString = txtEncryptResult.Text;
+
+            string resultString = DecryptString(EncryptedString, passwordString);
+            txtDecrypt.Text = resultString;
+        }
+
+
     }
 }
